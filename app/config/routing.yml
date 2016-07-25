@@ -1,7 +1,6 @@
 sie_document:
-    resource: "@SIEDocumentBundle/Controller/"
-    type:     annotation
-    prefix:   /
+    resource: "@SIEDocumentBundle/Resources/config/routing.yml"
+    prefix:   /document
 
 sie_contrat:
     resource: "@SIEContratBundle/Resources/config/routing.yml"

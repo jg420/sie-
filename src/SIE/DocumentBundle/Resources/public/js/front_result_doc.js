@@ -37,9 +37,11 @@ var msgNoCentral="Pas de central selectioné !";
 var path_document="http://127.0.0.1/ref/web/app_dev.php/document/"
 
 $(document).ready(function () {
+    $('#lien_document').val('http://www.google.fr/1.png')
     
     $('#btn_ajout_document').click(function(){
         frd_prepare_a_ajouter();
+        new_doc=true;
     });
     
     $('#btn_sup_document').click(function(){
@@ -61,7 +63,7 @@ $(document).ready(function () {
     });
     $('#btn_valid_modif_document').click(function(){
         if(new_doc){
-            frd_ajoute_document();
+            frd_ajoute_doc();
             
         }else {
             frd_modifier_document();            
@@ -76,7 +78,13 @@ $(document).ready(function () {
     });
 });
 
-function frd_affiche_doc_parId(){}
+function frd_affiche_doc_parId(id_document){
+   index=listDocument[0].indexOf(id_document);
+   if(index!==-1){
+       $('#lib_document').val(listDocument[1][index]);
+       $('#lien_document').val(listDocument[2][index]);
+   }
+}
 
 
 function frd_charge_et_affiche_doc_par_id_central(){
@@ -93,11 +101,13 @@ function frd_razUI(){
 }
 
 function frd_prepare_a_ajouter(){
+    //alert('passage ds prepare a ajouter')
     if(id_central!==''){
+       // alert('passage ds le if');
         frd_razUI();
         frd_active_input();
         frd_affiche_btn_annuller_valider();
-    }
+    } 
 }
 function frd_prepare_a_modifier(){
     if(frd_is_valid_document()){
@@ -161,7 +171,7 @@ function frd_ajoute_doc(){
     
      $.ajax({
         method: 'POST',
-        url: path_document + 'addDocument',
+        url: path_document + 'add_document',
         data: {
             
             'lib_document': lib_document,
@@ -212,21 +222,21 @@ function frd_charge_doc_par_id_central(){
 }
 
 function frd_affiche_btn_annulle_valider(){
+    $('#btn_valid_modif_document').attr('style', 'visibility:visible');
+    $('#btn_annuler_modif_document').attr('style', 'visibility:visible');
+}
+
+function frd_cache_btn_annuller_valider(){
     $('#btn_valid_modif_document').attr('style', 'visibility:hidden');
     $('#btn_annuler_modif_document').attr('style', 'visibility:hidden');
 }
 
-function frd_cache_btn_annuller_valider(){
-    $('#btn_valid_modif_access').attr('style', 'visibility:hidden');
-    $('#btn_annuler_modif_access').attr('style', 'visibility:hidden');
-}
-
 function frd_active_input(){
-    $('#lien_document').attr('disabled','false');
-    $('#lib_document').attr('disabled','false');
+    $('#lien_document').attr('disabled',false);
+    $('#lib_document').attr('disabled',false);
 }
 
 function frd_desactive_input(){
-    $('#lien_document').attr('disabled','true');
-    $('#lib_document').attr('disabled','true');
+    $('#lien_document').attr('disabled',true);
+    $('#lib_document').attr('disabled',true);
 }

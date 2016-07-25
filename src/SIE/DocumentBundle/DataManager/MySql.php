@@ -1,8 +1,8 @@
 <?php
 
-//SIE/AccesBundle/DataManager/MySql.php
+//SIE/DoculentBundle/DataManager/MySql.php
 
-namespace SIE\AccessBundle\DataManager;
+namespace SIE\DocumentBundle\DataManager;
 
 class MySql {
 
@@ -50,11 +50,26 @@ class MySql {
 
         $this->closeBDD();
     }   
-    function getDocumentByIdCentral(){
+    function getDocumentByIdCentral($id_central){
           $this->connectBDD();
-          $request = "SELECT * FROM ";
-          $this->mysqli->query($request);
+          $request = "SELECT * FROM CORRESPONDACE_DOCUMENTS_CENTRAL AS cdc "
+                  . " INNER JOIN DOCUMENT as d ON cdc.id_document=d.id_document "
+                  . " WHERE cdc.id_central=".$id_central;
+          $result=$this->mysqli->query($request);
+          //echo $request;
+          $return=null;
+          if($result){
+              $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $return[$i]['id_document']=$row['id_document'];
+                $return[$i]['lib_document']=$row['lib_document'];
+                $return[$i]['lien_document']=$row['lien_document'];
+                $i++;
+            }
+          }
+          
           $this->closeBDD();
+          return $return;
     }
      
 }

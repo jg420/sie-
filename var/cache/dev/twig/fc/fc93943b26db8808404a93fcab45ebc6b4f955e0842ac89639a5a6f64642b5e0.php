@@ -15,8 +15,8 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7d8a1198ea58f379e06cdf5d995add872a24f576f80825d8661a3b1498e91246 = $this->env->getExtension("native_profiler");
-        $__internal_7d8a1198ea58f379e06cdf5d995add872a24f576f80825d8661a3b1498e91246->enter($__internal_7d8a1198ea58f379e06cdf5d995add872a24f576f80825d8661a3b1498e91246_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEDocumentBundle:Default:result_document.html.twig"));
+        $__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72 = $this->env->getExtension("native_profiler");
+        $__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72->enter($__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEDocumentBundle:Default:result_document.html.twig"));
 
         // line 2
         echo "
@@ -207,7 +207,8 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
     <br/>
     <br/>
     <br/>
-    <input id=\"lien_document\" type=\"file\" disabled=\"disabled\"> 
+    <a id='lien_document' href=''></a>
+    <input id=\"file_document\" type=\"file\" disabled=\"disabled\"> 
     <br/>
     <br/>
     <br/>
@@ -216,7 +217,7 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
     
 </div>    ";
         
-        $__internal_7d8a1198ea58f379e06cdf5d995add872a24f576f80825d8661a3b1498e91246->leave($__internal_7d8a1198ea58f379e06cdf5d995add872a24f576f80825d8661a3b1498e91246_prof);
+        $__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72->leave($__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72_prof);
 
     }
 
@@ -310,7 +311,8 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 /*     <br/>*/
 /*     <br/>*/
 /*     <br/>*/
-/*     <input id="lien_document" type="file" disabled="disabled"> */
+/*     <a id='lien_document' href=''></a>*/
+/*     <input id="file_document" type="file" disabled="disabled"> */
 /*     <br/>*/
 /*     <br/>*/
 /*     <br/>*/

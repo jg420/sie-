@@ -398,13 +398,23 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // sie_document_default_index
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'sie_document_default_index');
+        if (0 === strpos($pathinfo, '/document')) {
+            // get_documents_by_id_central
+            if (0 === strpos($pathinfo, '/document/getDocuments') && preg_match('#^/document/getDocuments/(?P<id_central>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_documents_by_id_central')), array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\AdminController::getDocumentsAction',));
             }
 
-            return array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\DefaultController::indexAction',  '_route' => 'sie_document_default_index',);
+            // add_document
+            if ($pathinfo === '/document/add_document') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_add_document;
+                }
+
+                return array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\AdminController::add_documentAction',  '_route' => 'add_document',);
+            }
+            not_add_document:
+
         }
 
         if (0 === strpos($pathinfo, '/contrat')) {
