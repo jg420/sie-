@@ -1,0 +1,33 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+    host: "127.0.0.1"
+    login:  "root"
+    mdp:    "bob123"
+    bdd:    "referentiel"
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    sie_central.dataManager:
+        class:  SIE\CentralBundle\DataManager\MySql
+        arguments: [%host%, %login%, %mdp%,%bdd%]
+    
+    sie_equipement.dataManager:
+         class: SIE\EquipementBundle\DataManager\MySql
+         arguments: [%host%, %login%, %mdp%,%bdd%]
+    
+    sie_contrat.dataManager:
+         class:  SIE\ContratBundle\DataManager\MySql
+         arguments: [%host%, %login%, %mdp%,%bdd%]
+    
+    sie_access.dataManager:
+         class:  SIE\AccessBundle\DataManager\MySql
+         arguments: [%host%, %login%, %mdp%,%bdd%]
+         
+    sie_document.dataManager:
+         class:  SIE\DocumentBundle\DataManager\MySql
+         arguments: [%host%, %login%, %mdp%,%bdd%]
+         

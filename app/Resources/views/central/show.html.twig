@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Central</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Libcentral</th>
+                <td>{{ central.libCentral }}</td>
+            </tr>
+            <tr>
+                <th>Etenduecentral</th>
+                <td>{{ central.etendueCentral }}</td>
+            </tr>
+            <tr>
+                <th>Codeanalytique</th>
+                <td>{{ central.codeAnalytique }}</td>
+            </tr>
+            <tr>
+                <th>Idcentral</th>
+                <td>{{ central.idCentral }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('central_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('central_edit', { 'id': central.idCentral }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

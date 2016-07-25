@@ -1,0 +1,24 @@
+
+restcentral :
+    type : rest
+    resource: "@SIECentralBundle/Resources/config/routing_rest.yml"
+  
+Rest_Equipement : 
+  type : rest
+  resource: "@SIEEquipementBundle/Resources/config/routing_rest.yml"
+  
+Rest_Contrat : 
+  type : rest
+  resource: "@SIEContratBundle/Resources/config/routing_rest.yml"
+  
+Rest_Access : 
+  type : rest
+  resource: "@SIEAccessBundle/Resources/config/routing_rest.yml"
+  
+ #Rest_Constructeur : 
+ # type : rest
+ # resource: "@ConstructeurBundle/Resources/config/routing_rest.yml"
+  
+ #Rest_Societe : 
+ # type : rest
+ # resource: "@SocieteBundle/Resources/config/routing_rest.yml" 

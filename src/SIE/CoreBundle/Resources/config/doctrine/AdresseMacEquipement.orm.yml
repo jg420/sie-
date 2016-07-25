@@ -1,0 +1,22 @@
+SIE\CoreBundle\Entity\AdresseMacEquipement:
+    type: entity
+    table: ADRESSE_MAC_EQUIPEMENT
+    id:
+        idAdresseMacEquipement:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_adresse_mac_equipement
+            generator:
+                strategy: IDENTITY
+    fields:
+        adresseMacEquipement:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: adresse_mac_equipement
+    lifecycleCallbacks: {  }

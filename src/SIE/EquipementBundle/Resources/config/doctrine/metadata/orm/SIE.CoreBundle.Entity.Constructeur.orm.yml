@@ -1,0 +1,19 @@
+SIE\CoreBundle\Entity\Constructeur:
+    type: entity
+    table: CONSTRUCTEUR
+    id:
+        idConstructeur:
+            id: true
+            type: integer
+            column: id_constructeur
+            generator:
+                strategy: IDENTITY
+    fields:
+        libConstructeur:
+            type: string
+            length: 25
+            nullable: true
+            options:
+                fixed: ''
+            column: lib_constructeur
+    lifecycleCallbacks: {  }

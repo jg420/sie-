@@ -1,0 +1,84 @@
+<?php
+
+namespace SIE\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Central
+ *
+ * @ORM\Table(name="CENTRAL", indexes={@ORM\Index(name="FK_central_dr", columns={"id_direction"}), @ORM\Index(name="FK_type_central", columns={"id_type_central"}), @ORM\Index(name="FK_central_cex", columns={"id_cex"})})
+ * @ORM\Entity
+ */
+class Central
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lib_central", type="string", length=35, nullable=true)
+     */
+    private $libCentral;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="etendue_central", type="integer", nullable=true)
+     */
+    private $etendueCentral;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code_analytique", type="string", length=35, nullable=true)
+     */
+    private $codeAnalytique;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="societe", type="string", length=30, nullable=true)
+     */
+    private $societe;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_central", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCentral;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\TypeCentral
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\TypeCentral")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_central", referencedColumnName="id_type_central")
+     * })
+     */
+    private $idTypeCentral;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\DirectionRegionales
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\DirectionRegionales")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_direction", referencedColumnName="id_direction")
+     * })
+     */
+    private $idDirection;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\ChargeExploitation
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\ChargeExploitation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_cex", referencedColumnName="id_cex")
+     * })
+     */
+    private $idCex;
+
+
+}
+

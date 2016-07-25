@@ -1,0 +1,22 @@
+SIE\CoreBundle\Entity\DirectionRegionales:
+    type: entity
+    table: DIRECTION_REGIONALES
+    id:
+        idDirection:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_direction
+            generator:
+                strategy: IDENTITY
+    fields:
+        libDirection:
+            type: string
+            nullable: false
+            length: 25
+            options:
+                fixed: false
+            column: lib_direction
+    lifecycleCallbacks: {  }

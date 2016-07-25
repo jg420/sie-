@@ -1,0 +1,36 @@
+sie_document:
+    resource: "@SIEDocumentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+sie_contrat:
+    resource: "@SIEContratBundle/Resources/config/routing.yml"
+    prefix:   /contrat
+
+sie_access:
+    resource: "@SIEAccessBundle/Resources/config/routing.yml"
+    prefix:   /access
+
+ 
+sie_core:
+    resource: "@SIECoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sie_direction:
+    resource: "@SIEDirectionBundle/Resources/config/routing.yml"
+    prefix:   /direction
+
+sie_equipement:
+    resource: "@SIEEquipementBundle/Resources/config/routing.yml"
+    prefix:   /equipement
+  
+
+sie_central:
+    resource: "@SIECentralBundle/Resources/config/routing.yml"
+    prefix:   /central
+#REST 
+rest : 
+  type : rest 
+  resource : "routing_rest.yml"
+  prefix : /api
+ 

@@ -1,0 +1,8 @@
+
+# src/SIE/ContratBundle/Resources/config/routing_rest.yml
+ 
+   
+contrat : 
+  type: rest
+  resource:     "SIEContratBundle:ContratRest"
+  name_prefix:  api_

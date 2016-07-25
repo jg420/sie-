@@ -1,0 +1,68 @@
+SIE\CoreBundle\Entity\Access:
+    type: entity
+    table: ACCESS
+    indexes:
+        FK_protocol_access0:
+            columns:
+                - id_protocol
+        FK_access_equiepemnt:
+            columns:
+                - id_adresse_ip_equipement
+    id:
+        idAccess:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_access
+            generator:
+                strategy: IDENTITY
+    fields:
+        nPort:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: n_port
+        login:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        libAccess:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: lib_access
+    manyToOne:
+        idAdresseIpEquipement:
+            targetEntity: AdresseIpEquipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_adresse_ip_equipement:
+                    referencedColumnName: id_adresse_ip_equipement
+            orphanRemoval: false
+        idProtocol:
+            targetEntity: Protocol
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_protocol:
+                    referencedColumnName: id_protocol
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,200 @@
+{# SIEcoreBundle/Resources/views/index.html.twig #}
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!-- <link rel="stylesheet" type="text/css" href="../script/quadranStyle.css"/>
+        <script src="../script/jquery.js" />
+        <script src="../script/jquery--ui.js" />
+        <script src="../script/formCentral.js"/> -->
+        {% stylesheets '@SIECoreBundle/Resources/public/css/quadranStyle.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+        {% stylesheets '@SIECoreBundle/Resources/public/css/jquery-ui.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+
+        {% block javascripts %}    
+            {% javascripts '@SIECoreBundle/Resources/public/js/jquery.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+            {% javascripts '@SIECoreBundle/Resources/public/js/jquery-ui.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+            {% javascripts '@SIECentralBundle/Resources/public/js/formCentral.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+
+
+
+
+        <title id="titre">DIRECTION REGIONALES</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+
+                    <li><a href="page_direction_regionales.xhtml">Directions Regionales</a></li>
+                    <li><a href="page_central.xhtml">Centrales </a></li>
+                    <li><a href="page_equipement.xhtml">Equipements</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <!--<div id='bloc_select_critere'>
+              <b class="titreSection">Selection</b>
+            <table class='tableSelection' border='1'>
+              
+            
+              <tr>
+                <th>1) Direction Regionales</th>
+                <th>2) Nom de la centrale</th>
+                <th>3) Type de centrale</th>
+                  
+                  
+              </tr>
+              <tr><td>
+                    <br/>   
+                    
+                    <br/><input id="check_allDr" type="checkbox"/>Toutes Directions
+                    <br/>
+                    <br/><input class="dr" value='1' type="checkbox"/>DR NORD
+                    <br/><input class="dr" value='2' type="checkbox"/>DR SUD
+                    <br/><input class="dr" value='3' type="checkbox"/>DR COOM
+                </td>
+                <td>
+                    <br/>   
+                        <br/>
+                    <select id="listCentral">                        
+                         <option>Choisissez une centrale</option>
+                    </select>
+                </td>
+                <td>
+                    <br/>   
+                    <br/>
+                    <select id="input_type_central">
+                        <option>Choisissez un type</option>
+                    </select>           
+                    <br/>
+                </td>
+             </tr>
+            </table>
+        </div>
+        -->
+        <table >
+            <tr>
+                <td>
+                    <div id="bloc_recherche">
+                        <b class="titreSection">Recherche</b>
+                        <br/>  
+                        <br/> 
+                        <b>Nom de la central : </b>
+                        <br/>
+                        <input  class='ui-autocomplete-input' id="input_lib_central" type="text"/>
+                        <br/>
+
+
+                        <br/>
+                        <b>Superficie de la centrale :</b>
+                        <br/>
+                        <input id="input_superficie_central" type='text'/>
+
+                        <br/>
+                        <br/>
+                        <b>Chargé d'exploitation :</b>
+                        <br/>
+                        <input id="input_lib_cex" type="text"/>
+                        <br/>
+                        <br/>
+
+                    </div>
+                </td>
+                <td>
+                    <div id="bloc_resultat_principal">
+                        <b class="titreSection">Resultats</b>
+                        <br/> 
+                        <br/>
+                        <b>Zone : </b>
+                        <input size='8' disabled='disabled' id="output_lib_zone" type="text"/>
+                        <br/>
+                        <br/>
+                        <input id="output_id_central" type='hidden' value='0'/>
+                        <b>Nom de la central : </b>
+                        <br/>
+                        <input disabled='disabled' id="output_lib_central" type="text"/>
+                        <br/><b>Type de central :</b>
+                        <br/>
+                        <input id="output_select_type_central" disabled='disabled' type="text"/>
+                        <br/>  
+                        <br/>  
+                        <b>Chargé d'exploitation :</b>
+                        <br/>
+                        <input disabled='disabled' id="output_lib_cex" type="text"/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <font  color='brown'>
+                            <b>Nom de l'équipement :</b>
+                            <br/>                     
+                            <select id="output_select_equipement" >
+                            </select>
+                            <br/>
+                            <br/>
+
+                            <b>Constructeur :</b>
+                            <br/>
+                            <select disabled='disabled' id="output_constructeur" >
+                            </select>
+                        </font>
+                        <div id='output_resumeResultat'>
+
+                        </div>
+
+                        <br/>
+                        <br/>
+
+                        <br/>
+                    </div>
+                </td>
+                <td>
+                    <div id="bloc_resultat_details">
+                        <b class="titreSection">Adminstration</b>
+                        <br/>
+                        <div id="bloc_resultat_details_js">
+                            <b>Lien equipement :</b>
+                            <br/>
+                            <div id="resultat_detail_lien_equipement">
+                            </div>
+                            <b>Lien schema :</b> 
+                            <br/>
+                            <div id="resultat_detail_lien_schema">
+
+
+                            </div>
+                            <b>Lien contrat :</b>
+                            <br/>
+                            <div id="resultat_detail_lien_contrat">
+
+
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+
+                    </div>
+                    <a id="lienPDF" href="../form/formCentral.php?pdf=1">Referenciel PDF</a>
+                </td>
+            </tr>
+        </table>       
+    </body>
+</html>

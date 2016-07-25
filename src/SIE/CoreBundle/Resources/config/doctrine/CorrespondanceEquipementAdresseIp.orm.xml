@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SIE\CoreBundle\Entity\CorrespondanceEquipementAdresseIp" table="CORRESPONDANCE_EQUIPEMENT_ADRESSE_IP">
+    <indexes>
+      <index name="FK_corresp_equip_adress_ip1" columns="id_adresse_ip_fk_ceap"/>
+      <index name="IDX_FE7DAFA96EB983A2" columns="id_equipement_fk_ceap"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_equipement_fk_ceap" columns="id_equipement_fk_ceap,id_adresse_ip_fk_ceap"/>
+    </unique-constraints>
+    <id name="idEquipementAdresseIp" type="integer" column="id_equipement_adresse_ip">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="infoCom" type="string" column="info_com" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipementFkCeap" target-entity="Equipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_equipement_fk_ceap" referenced-column-name="id_equipement"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAdresseIpFkCeap" target-entity="AdresseIpEquipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_adresse_ip_fk_ceap" referenced-column-name="id_adresse_ip_equipement"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

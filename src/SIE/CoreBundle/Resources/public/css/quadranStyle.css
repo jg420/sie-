@@ -1,0 +1,131 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 avr. 2016, 19:59:25
+    Author     : g.juillerot@quadran.fr
+*/
+body {
+    background-color:lightsteelblue
+}
+
+#bloc_recherche {
+    background-color:whitesmoke;
+    color: navy;
+    margin-left: 20px;
+    min-height: 33vh;
+    min-width: 33vh;
+}
+
+#bloc_resultat_principal{
+
+    background-color:khaki;
+    margin-left: 20px;
+    min-height: 110vh;
+    min-width: 33vh;
+}
+#bloc_resultat_contrat{
+
+    position : relative;
+    /*left:50%;*/
+    background-color:lightblue;
+    height:100%;
+    margin-left: 20px;
+    min-height: 110vh;
+    min-width: 33vh;
+}
+#bloc_resultat_access{
+
+    position : relative;
+    /*left:50%;*/
+    background-color:lightblue;
+    height:100%;
+    margin-left: 20px;
+    min-height: 110vh;
+    min-width: 33vh;
+}
+#bloc_resultat_equipement{
+
+    position : relative;
+    /*left:50%;*/
+    background-color:lightblue;
+    height:100%;
+    margin-left: 20px;
+    min-height: 110vh;
+    min-width: 33vh;
+}
+#bloc_resultat_document{
+
+    position : relative;
+    /*left:50%;*/
+    background-color:lightblue;
+    height:100%;
+    margin-left: 20px;
+    min-height: 110vh;
+    min-width: 33vh;
+}
+
+.titreSection{
+    color:red;
+    position : relative;
+    left:25%;
+
+}
+.tableSelection{
+    /*border:1;*/
+
+}
+.bloc_resultat_details{
+    background-color:khaki;
+    margin-left: 20px;
+    min-height: 33vh;
+    min-width: 33vh;
+}
+.btn_annuler{
+  border: none ;
+    background-color: transparent;
+}
+
+.btn_ajout{
+    border: none ;
+ 
+   background-color: transparent;
+
+}
+.btn_sup{
+    border: none ;
+ 
+   background-color: transparent;
+
+}
+.btn_valider{
+    border: none ;
+ 
+   background-color: transparent;
+
+}
+
+.btn_precedent{
+    border: none ;
+    background-color: transparent;
+    
+}
+
+.btn_suivant{
+   border: none ;
+    background-color: transparent;
+
+}
+
+.btn_modifier{
+       background-color: transparent;
+       border: none ;
+
+}
+.img-background-button{
+    border: none ;
+    height: 22px;
+    width: 30px; 
+}

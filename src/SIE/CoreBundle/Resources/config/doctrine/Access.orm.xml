@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SIE\CoreBundle\Entity\Access" table="ACCESS">
+    <indexes>
+      <index name="FK_protocol_access0" columns="id_protocol"/>
+      <index name="FK_access_equiepemnt" columns="id_adresse_ip_equipement"/>
+    </indexes>
+    <id name="idAccess" type="integer" column="id_access">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nPort" type="integer" column="n_port" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="login" type="string" column="login" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="password" type="string" column="password" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="libAccess" type="string" column="lib_access" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idProtocol" target-entity="Protocol" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_protocol" referenced-column-name="id_protocol"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAdresseIpEquipement" target-entity="AdresseIpEquipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_adresse_ip_equipement" referenced-column-name="id_adresse_ip_equipement"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

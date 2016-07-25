@@ -1,0 +1,4 @@
+services:
+#    sie_direction.example:
+#        class: SIE\DirectionBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

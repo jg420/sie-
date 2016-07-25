@@ -1,0 +1,3 @@
+get_documents_by_id_central:
+    path: /getDocuments/{id_central}
+    defaults: { _controller: "SIEDocumentBundle:Admin:getDocuments" }

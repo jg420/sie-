@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SIE\CoreBundle\Entity\SocieteCentral" table="SOCIETE_CENTRAL">
+    <indexes>
+      <index name="FK_central_societe1" columns="id_central"/>
+      <index name="IDX_8D9E89D5C7F894CD" columns="id_societe"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_societe" columns="id_societe,id_central"/>
+    </unique-constraints>
+    <id name="idSocieteCentral" type="integer" column="id_societe_central">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idCentral" target-entity="Central" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_central" referenced-column-name="id_central"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSociete" target-entity="Societe" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_societe" referenced-column-name="id_societe"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

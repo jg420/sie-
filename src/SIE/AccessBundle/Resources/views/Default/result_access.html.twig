@@ -1,0 +1,111 @@
+{# SIE/CentralBundle/Resources/views/form/result_detail.html.twig #}
+
+<div id="bloc_resultat_access" class="bloc_resultat_details" ng-controller="access_equipement_controller">
+    <b class="titreSection">Access</b>
+    <p id="lib_central_access" class="lib_central"></p>
+    
+    <br/>
+    <p id="lib_equipement_access" class="lib_equipement"></p>
+    <p id="info_access" ></p>
+    <!--Affichage
+    <input id="chck_auto_refresh_access" type="checkbox"/>-->
+    <br/>
+    <br/>
+    <br/>
+    <button ng-model="btn_ajout_access" id="btn_ajout_access" class="btn_ajout"  >
+        {% image '@SIECoreBundle/Resources/public/images/btn_ajout.jpeg'
+        %}
+        <img  class="img-background-button"    src="{{ asset_url }}"  alt="AJout"/>
+        {% endimage %}
+    </button>
+
+    <button ng-model="btn_sup_access" id="btn_sup_access" class="btn_sup"  >
+        {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'
+        %}
+        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>
+        {% endimage %}
+    </button>
+
+    <br/>
+    <button ng-model="btn_last_access" id="btn_last_access" class="btn_precedent" >
+        {% image '@SIECoreBundle/Resources/public/images/btn_gauche.jpeg'
+        %}
+        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Precedent"/>
+        {% endimage %}       
+    </button>
+
+
+
+    <button ng-model="btn_modif_access" id="btn_modif_access" class="btn_modifier"  >
+        {% image '@SIECoreBundle/Resources/public/images/btn_modif.jpeg'
+        %}
+        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Modif"/>
+        {% endimage %}
+    </button>
+
+    <button ng-model="btn_next_access" id="btn_next_access"  class="btn_suivant"  value="suivant" >
+        {% image '@SIECoreBundle/Resources/public/images/droite.jpeg'
+        %}
+        <img class="img-background-button"    src="{{ asset_url }}"  alt="Suivant"/>
+        {% endimage %}
+    </button>
+    <br/>
+
+
+    <button ng-model="btn_valid_modif_access" id="btn_valid_modif_access"  class="btn_suivant"  value="valider" style="visibility: hidden">
+        {% image '@SIECoreBundle/Resources/public/images/btn_valider.jpeg'
+        %}
+        <img class="img-background-button"   src="{{ asset_url }}"  alt="valider"/>
+        {% endimage %}
+    </button>
+
+
+    <button ng-model="btn_annuler_modif_access" id="btn_annuler_modif_access" class="btn_annuler" style="visibility: hidden">
+        {% image '@SIECoreBundle/Resources/public/images/btn_annuler.jpeg'
+        %}
+        <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>
+        {% endimage%}
+    </button>
+
+    <div   id="bloc_resultat_equipement_access">
+
+        <br/>
+        <br/>
+        <br/>
+        <a id="lien_access">Lien par defaut </a>
+        <br/>
+        <br/>
+        <b>Nom :</b><br/>
+        <input ng-model="lib_access" id="lib_access" disabled="disabled" type="text"/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <b>Adresse :</b><br/>
+        <input ng-model="adresse_access" id="adresse_access" disabled="disabled" type="text"/>
+        <br/>
+        <br/>
+
+        <b>User :</b><br/>
+        <input ng-model="lib_user_access" id="lib_user_access" disabled="disabled"  type="text"/>
+
+        <br/>
+        <b>Mot de passe :</b><br/>
+        <input ng-model="mdp_access" id="mdp_access" disabled="disabled"  type="text"/>
+
+        <br/>
+        <b>port :</b><br/>
+        <input ng-model="port_access" id="port_access"  disabled="disabled" type="text"/>
+
+        <br/>
+        <b>protocol :</b><br/>
+        <select ng-model="protocol_access" id="select_protocol_access"  disabled="disabled" type="text">
+        </select>
+
+        <input type="hidden" id="id_access">
+    </div>
+
+
+
+</div>  

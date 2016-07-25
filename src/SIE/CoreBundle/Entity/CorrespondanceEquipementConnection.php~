@@ -1,0 +1,53 @@
+<?php
+
+namespace SIE\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CorrespondanceEquipementConnection
+ *
+ * @ORM\Table(name="CORRESPONDANCE_EQUIPEMENT_CONNECTION", uniqueConstraints={@ORM\UniqueConstraint(name="id_equipement_fk_cect", columns={"id_equipement_fk_cect", "id_type_connection_fk_cect"})}, indexes={@ORM\Index(name="FK_corresp_equip_connection2", columns={"id_type_connection_fk_cect"}), @ORM\Index(name="IDX_B8FA920E5BE22539", columns={"id_equipement_fk_cect"})})
+ * @ORM\Entity
+ */
+class CorrespondanceEquipementConnection
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="info_comp", type="string", length=25, nullable=true)
+     */
+    private $infoComp;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_equipement_connection", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEquipementConnection;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\Equipement
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\Equipement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_equipement_fk_cect", referencedColumnName="id_equipement")
+     * })
+     */
+    private $idEquipementFkCect;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\TypeConnectionEquipement
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\TypeConnectionEquipement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_connection_fk_cect", referencedColumnName="id_type_connection")
+     * })
+     */
+    private $idTypeConnectionFkCect;
+
+
+}
+

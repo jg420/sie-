@@ -1,0 +1,83 @@
+{# SIE/CentralBundle/Resources/views/form/result_contrat.html.twig #}
+
+<div id="bloc_resultat_contrat" class="bloc_resultat_details" ng-controller="result_contrat_controller">
+    <b class="titreSection">Contrat</b>
+    <p id="lib_central_contrat" class="lib_central"></p>
+    
+
+    <br/>
+    <br/>
+    <br/>
+<button ng-model="btn_ajout_contrat" id="btn_ajout_contrat" class="btn_ajout"  >
+     {% image '@SIECoreBundle/Resources/public/images/btn_ajout.jpeg'
+       %}
+       <img  class="img-background-button"    src="{{ asset_url }}"  alt="AJout"/>
+    {% endimage %}
+    </button>
+    
+    <button ng-model="btn_sup_contrat" id="btn_sup_contrat" class="btn_sup"  >
+     {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'
+       %}
+       <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>
+    {% endimage %}
+    </button>
+    
+    <br/>
+    <button ng-model="btn_last_contrat" id="btn_last_contrat" class="btn_precedent" >
+        {% image '@SIECoreBundle/Resources/public/images/btn_gauche.jpeg'
+       %}
+        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Precedent"/>
+        {% endimage %}       
+    </button>
+    
+   
+    
+    <button ng-model="btn_modif_contrat" id="btn_modif_contrat" class="btn_modifier"  >
+     {% image '@SIECoreBundle/Resources/public/images/btn_modif.jpeg'
+       %}
+       <img  class="img-background-button"    src="{{ asset_url }}"  alt="Modif"/>
+    {% endimage %}
+    </button>
+    
+    <button ng-model="btn_next_contrat" id="btn_next_contrat"  class="btn_suivant"  value="suivant" >
+        {% image '@SIECoreBundle/Resources/public/images/droite.jpeg'
+       %}
+        <img class="img-background-button"    src="{{ asset_url }}"  alt="Suivant"/>
+        {% endimage %}
+    </button>
+    <br/>
+    
+    
+    <button ng-model="btn_valid_modif_contrat" id="btn_valid_modif_contrat"  class="btn_suivant"  style="visibility: hidden">
+        {% image '@SIECoreBundle/Resources/public/images/btn_valider.jpeg'
+       %}
+        <img class="img-background-button"   src="{{ asset_url }}"  alt="valider"/>
+        {% endimage %}
+    </button>
+    
+    
+    <button ng-model="btn_annuler_modif_contrat" id="btn_annuler_modif_contrat" class="btn_annuler" style="visibility: hidden">
+     {% image '@SIECoreBundle/Resources/public/images/btn_annuler.jpeg'
+       %}
+        <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>
+        {% endimage %}    
+    </button>
+
+    <br/>
+    <br/>
+    <b>Nom :</b>
+    <br/><input id="lib_contrat" type="text" disabled="disabled">
+    <br/>
+    <br/>
+    <!--<b>Lien :</b>-->
+    <br/>
+    <br/>
+    <br/>
+    <input id="lien_contrat" type="file" disabled="disabled"> 
+    <br/>
+    <br/>
+    <br/>
+     
+    <input id='id_contrat' type='hidden'>
+    
+</div>    

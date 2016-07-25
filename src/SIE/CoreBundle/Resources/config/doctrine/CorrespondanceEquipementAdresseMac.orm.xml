@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SIE\CoreBundle\Entity\CorrespondanceEquipementAdresseMac" table="CORRESPONDANCE_EQUIPEMENT_ADRESSE_MAC">
+    <indexes>
+      <index name="FK_corresp_equip_adress_mac2" columns="id_adresse_mac_fk_ceam"/>
+      <index name="IDX_C6F31288DBFEF7B" columns="id_equipement_fk_ceam"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_equipement_fk_ceam" columns="id_equipement_fk_ceam,id_adresse_mac_fk_ceam"/>
+    </unique-constraints>
+    <id name="idEquipementAdresseMac" type="integer" column="id_equipement_adresse_mac">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="infoComp" type="string" column="info_comp" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipementFkCeam" target-entity="Equipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_equipement_fk_ceam" referenced-column-name="id_equipement"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAdresseMacFkCeam" target-entity="AdresseMacEquipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_adresse_mac_fk_ceam" referenced-column-name="id_adresse_mac_equipement"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

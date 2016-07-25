@@ -1,0 +1,85 @@
+SIE\CoreBundle\Entity\Central:
+    type: entity
+    table: CENTRAL
+    indexes:
+        FK_central_dr:
+            columns:
+                - id_direction
+        FK_type_central:
+            columns:
+                - id_type_central
+        FK_central_cex:
+            columns:
+                - id_cex
+    id:
+        idCentral:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_central
+            generator:
+                strategy: IDENTITY
+    fields:
+        libCentral:
+            type: string
+            nullable: true
+            length: 35
+            options:
+                fixed: false
+            column: lib_central
+        etendueCentral:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: etendue_central
+        codeAnalytique:
+            type: string
+            nullable: true
+            length: 35
+            options:
+                fixed: false
+            column: code_analytique
+    manyToOne:
+        idCex:
+            targetEntity: ChargeExploitation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_cex:
+                    referencedColumnName: id_cex
+            orphanRemoval: false
+        idDirection:
+            targetEntity: DirectionRegionales
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_direction:
+                    referencedColumnName: id_direction
+            orphanRemoval: false
+        idTypeCentral:
+            targetEntity: TypeCentral
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_central:
+                    referencedColumnName: id_type_central
+            orphanRemoval: false
+    manyToMany:
+        idEquipementFkEc:
+            targetEntity: Equipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: idCentralFkEc
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
