@@ -106,13 +106,13 @@ function frd_prepare_a_ajouter(){
        // alert('passage ds le if');
         frd_razUI();
         frd_active_input();
-        frd_affiche_btn_annuller_valider();
+        frd_affiche_btn_annulle_valider();
     } 
 }
 function frd_prepare_a_modifier(){
     if(frd_is_valid_document()){
         frd_active_input();
-        frd_affiche_btn_annuller_valider();
+        frd_affiche_btn_annulle_valider();
         
     }
 }
@@ -232,11 +232,11 @@ function frd_cache_btn_annuller_valider(){
 }
 
 function frd_active_input(){
-    $('#lien_document').attr('disabled',false);
+    $('#file_document').attr('disabled',false);
     $('#lib_document').attr('disabled',false);
 }
 
 function frd_desactive_input(){
-    $('#lien_document').attr('disabled',true);
+    $('#file_document').attr('disabled',true);
     $('#lib_document').attr('disabled',true);
 }

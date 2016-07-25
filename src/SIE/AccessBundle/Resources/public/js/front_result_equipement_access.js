@@ -354,7 +354,7 @@ function frea_desactive_input() {
     $('#adresse_access').attr('disabled', 'disabled');
     $('#lib_access').attr('disabled', 'disabled');
 }
-function frd_affiche_btn_annuller_valider() {
+function frea_affiche_btn_annuller_valider() {
     $('#btn_valid_modif_access').attr('style', 'visibility:visible');
     $('#btn_annuler_modif_access').attr('style', 'visibility:visible');
 }
