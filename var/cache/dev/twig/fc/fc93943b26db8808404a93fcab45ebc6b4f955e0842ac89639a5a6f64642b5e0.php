@@ -15,8 +15,8 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72 = $this->env->getExtension("native_profiler");
-        $__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72->enter($__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEDocumentBundle:Default:result_document.html.twig"));
+        $__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b = $this->env->getExtension("native_profiler");
+        $__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b->enter($__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEDocumentBundle:Default:result_document.html.twig"));
 
         // line 2
         echo "
@@ -196,28 +196,28 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
         // line 63
         echo "    
     </button>
-
+    <form id=\"form_doc\" method='POST'>
     <br/>
     <br/>
     <b>Nom :</b>
     <br/><input id=\"lib_document\" type=\"text\" disabled=\"disabled\">
     <br/>
     <br/>
-    <!--<b>Lien :</b>-->
+    <b>Lien :</b>
     <br/>
     <br/>
     <br/>
-    <a id='lien_document' href=''></a>
-    <input id=\"file_document\" type=\"file\" disabled=\"disabled\"> 
+    <a id=\"lien_document\" href=\"..\">dowload</a>
+    <input  name=\"file_document\"   id=\"file_document\" type=\"file\" disabled=\"disabled\"> 
     <br/>
     <br/>
     <br/>
      
     <input id='id_document' type='hidden'>
-    
+    </form>
 </div>    ";
         
-        $__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72->leave($__internal_8d0cfc5728edaadea0772760ec622f3e163221f326b3c682818f93fee69c6e72_prof);
+        $__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b->leave($__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b_prof);
 
     }
 
@@ -300,23 +300,23 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 /*         <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>*/
 /*         {% endimage %}    */
 /*     </button>*/
-/* */
+/*     <form id="form_doc" method='POST'>*/
 /*     <br/>*/
 /*     <br/>*/
 /*     <b>Nom :</b>*/
 /*     <br/><input id="lib_document" type="text" disabled="disabled">*/
 /*     <br/>*/
 /*     <br/>*/
-/*     <!--<b>Lien :</b>-->*/
+/*     <b>Lien :</b>*/
 /*     <br/>*/
 /*     <br/>*/
 /*     <br/>*/
-/*     <a id='lien_document' href=''></a>*/
-/*     <input id="file_document" type="file" disabled="disabled"> */
+/*     <a id="lien_document" href="..">dowload</a>*/
+/*     <input  name="file_document"   id="file_document" type="file" disabled="disabled"> */
 /*     <br/>*/
 /*     <br/>*/
 /*     <br/>*/
 /*      */
 /*     <input id='id_document' type='hidden'>*/
-/*     */
+/*     </form>*/
 /* </div>    */

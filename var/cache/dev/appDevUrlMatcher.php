@@ -404,16 +404,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_documents_by_id_central')), array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\AdminController::getDocumentsAction',));
             }
 
-            // add_document
-            if ($pathinfo === '/document/add_document') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_add_document;
-                }
+            if (0 === strpos($pathinfo, '/document/add_document')) {
+                // add_document
+                if ($pathinfo === '/document/add_document') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_add_document;
+                    }
 
-                return array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\AdminController::add_documentAction',  '_route' => 'add_document',);
+                    return array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\AdminController::add_documentAction',  '_route' => 'add_document',);
+                }
+                not_add_document:
+
+                // add_document_central
+                if ($pathinfo === '/document/add_document_central') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_add_document_central;
+                    }
+
+                    return array (  '_controller' => 'SIE\\DocumentBundle\\Controller\\AdminController::add_document_centralAction',  '_route' => 'add_document_central',);
+                }
+                not_add_document_central:
+
             }
-            not_add_document:
 
         }
 
@@ -588,16 +602,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             if (0 === strpos($pathinfo, '/equipement/get')) {
-                // get_all_cons
-                if ($pathinfo === '/equipement/getAllConstructeur') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_get_all_cons;
-                    }
+                if (0 === strpos($pathinfo, '/equipement/getAll')) {
+                    // get_all_cons
+                    if ($pathinfo === '/equipement/getAllConstructeur') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_get_all_cons;
+                        }
 
-                    return array (  '_controller' => 'SIE\\EquipementBundle\\Controller\\DefaultController::getConstructeursAction',  '_route' => 'get_all_cons',);
+                        return array (  '_controller' => 'SIE\\EquipementBundle\\Controller\\DefaultController::getConstructeursAction',  '_route' => 'get_all_cons',);
+                    }
+                    not_get_all_cons:
+
+                    // get_all_type
+                    if ($pathinfo === '/equipement/getAllType') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_get_all_type;
+                        }
+
+                        return array (  '_controller' => 'SIE\\EquipementBundle\\Controller\\DefaultController::getTypeAction',  '_route' => 'get_all_type',);
+                    }
+                    not_get_all_type:
+
                 }
-                not_get_all_cons:
 
                 if (0 === strpos($pathinfo, '/equipement/getEquipement')) {
                     // sie_get_equipements

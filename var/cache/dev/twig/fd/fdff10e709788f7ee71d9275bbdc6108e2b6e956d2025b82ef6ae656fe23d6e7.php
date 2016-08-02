@@ -15,8 +15,8 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6b52ebedd52593c4d6096328129c0f0e1564db394c8dd05ec256a6bd50f82f8c = $this->env->getExtension("native_profiler");
-        $__internal_6b52ebedd52593c4d6096328129c0f0e1564db394c8dd05ec256a6bd50f82f8c->enter($__internal_6b52ebedd52593c4d6096328129c0f0e1564db394c8dd05ec256a6bd50f82f8c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEEquipementBundle:Default:result_equipement.html.twig"));
+        $__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2 = $this->env->getExtension("native_profiler");
+        $__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2->enter($__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEEquipementBundle:Default:result_equipement.html.twig"));
 
         // line 2
         echo "
@@ -168,15 +168,21 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
     <br/>
     <b>Constructeur :</b>
     <br/>
-    <select ng-model=\"constructeur\" disabled='disabled' id=\"output_constructeur\" disabled='disabled' >
+    <select ng-model=\"constructeur\" id=\"constructeur\" disabled='disabled' >
     </select>
 
     <br/>
-    <b>Nom : </b><br/>
+    <b>Type :</b>
+    </br>
+    <select disabled=\"disabled\" id=\"type_equipement\">
+    </select>
+     </br>       
+    <b>Nom : </b>
+    <br/>
     <input ng-model=\"lib_equipement\" id=\"lib_equipement\" type=\"text\" disabled='disabled'>
     <br/>
     ";
-        // line 93
+        // line 99
         echo "
     <b>Version : </b><br/>
     <input ng-model=\"version_equipement\" id=\"version_equipement\" type=\"text\" disabled='disabled'>
@@ -193,7 +199,7 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 
 ";
         
-        $__internal_6b52ebedd52593c4d6096328129c0f0e1564db394c8dd05ec256a6bd50f82f8c->leave($__internal_6b52ebedd52593c4d6096328129c0f0e1564db394c8dd05ec256a6bd50f82f8c_prof);
+        $__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2->leave($__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2_prof);
 
     }
 
@@ -209,7 +215,7 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 
     public function getDebugInfo()
     {
-        return array (  180 => 93,  153 => 64,  139 => 63,  135 => 61,  129 => 57,  115 => 55,  111 => 53,  107 => 51,  103 => 41,  89 => 39,  85 => 37,  81 => 35,  76 => 24,  62 => 22,  58 => 20,  53 => 17,  39 => 15,  35 => 13,  22 => 2,);
+        return array (  186 => 99,  153 => 64,  139 => 63,  135 => 61,  129 => 57,  115 => 55,  111 => 53,  107 => 51,  103 => 41,  89 => 39,  85 => 37,  81 => 35,  76 => 24,  62 => 22,  58 => 20,  53 => 17,  39 => 15,  35 => 13,  22 => 2,);
     }
 }
 /* {# SIE/CentralBundle/Resources/views/form/result_equipement.html.twig #}*/
@@ -293,11 +299,17 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 /*     <br/>*/
 /*     <b>Constructeur :</b>*/
 /*     <br/>*/
-/*     <select ng-model="constructeur" disabled='disabled' id="output_constructeur" disabled='disabled' >*/
+/*     <select ng-model="constructeur" id="constructeur" disabled='disabled' >*/
 /*     </select>*/
 /* */
 /*     <br/>*/
-/*     <b>Nom : </b><br/>*/
+/*     <b>Type :</b>*/
+/*     </br>*/
+/*     <select disabled="disabled" id="type_equipement">*/
+/*     </select>*/
+/*      </br>       */
+/*     <b>Nom : </b>*/
+/*     <br/>*/
 /*     <input ng-model="lib_equipement" id="lib_equipement" type="text" disabled='disabled'>*/
 /*     <br/>*/
 /*     {#*/

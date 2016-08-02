@@ -63,33 +63,73 @@ $(document).ready(function () {
     });
     $('#btn_valid_modif_document').click(function(){
         if(new_doc){
+            //alert('debut ajout doc ');
+              //alert('path_document : '+path_document);
             frd_ajoute_doc();
-            
+            //alert('fin ajout doc ');
         }else {
+               
             frd_modifier_document();            
         }
         frd_desactive_input();
-        frd_cache_btn_annuler_valider();
+        frd_cache_btn_annuller_valider();
     });
     $('#btn_annuler_document').click(function(){
         frd_affiche_doc_parId(id_document);
-        frd_affiche_btn_annuller_valider();
+        frd_cache_btn_annuller_valider();
         frd_desactive_input();
     });
 });
 
 function frd_affiche_doc_parId(id_document){
+    id=id_document+0;
    index=listDocument[0].indexOf(id_document);
+   //
+   //
+   //alert(id_document);
    if(index!==-1){
-       $('#lib_document').val(listDocument[1][index]);
-       $('#lien_document').val(listDocument[2][index]);
-   }
+       //alert('lib_document : '+listDocument[2][index]);
+       $('#lib_document').val(listDocument[2][index]);
+       $('#lien_document').attr('href',listDocument[1][index]);
+       $('#lien_document').text(listDocument[1][index]);
+   }else 
+       alert('pas de document trouvé ! ');
 }
 
+
+function frd_charge_doc_par_id_central(){
+    $.ajax({
+        method: 'GET',
+        async: false,
+        url: path_document + 'getDocuments/' + id_central,
+        dataType: 'json', // on veut un retour JSON
+        success: function (json) {
+            //alert('ok back end');
+            var i = 0;
+            var val;
+            listDocument[0] = [];
+            listDocument[1] = [];
+            listDocument[2] = [];
+          
+            //videZoneResultatPrincipal();   
+            $.each(json, function (index, value) { // pour chaque noeud JSON
+                //$('#bloc_resultat_access').append(value.id_access);
+                listDocument[0][i] = value.id_document;
+                listDocument[1][i] = value.lien_document;   //lib_access
+                listDocument[2][i] = value.lib_document;   //login
+          
+
+
+                i++;
+            });
+        }
+    });
+}
 
 function frd_charge_et_affiche_doc_par_id_central(){
     frd_charge_doc_par_id_central();
     frd_razUI();
+    //alert('loading');
     frd_affiche_doc_parId(listDocument[0][0]);
     
 }
@@ -107,7 +147,8 @@ function frd_prepare_a_ajouter(){
         frd_razUI();
         frd_active_input();
         frd_affiche_btn_annulle_valider();
-    } 
+    } else 
+        alert('pas de central selectioné ! ');
 }
 function frd_prepare_a_modifier(){
     if(frd_is_valid_document()){
@@ -168,56 +209,60 @@ function frd_modifie_doc(){
 function frd_ajoute_doc(){
     lib_document=$('#lib_document').val();
     lien_document=$('#lien_document').val();
+    document=$('#file_document').val();
     
-     $.ajax({
+    var form = document.getElementById("form_doc");
+    data_doc=new FormData(form);
+    //data_doc.append('file',document);
+    //alert('fin declaration');
+    
+    //alert('path_document : '+path_document);
+    $.ajax({
         method: 'POST',
-        url: path_document + 'add_document',
-        data: {
-            
-            'lib_document': lib_document,
-            'lien': lien_document,
-           },
-        dataType: 'html', // on veut un retour JSON
-        success: function (msg) {
-            alert(msg);
+        url: path_document+ 'add_document',
+        data:  data_doc,
+                
+          /*  'lib_document': lib_document,
+            'lien': lien_document  },*/
+        async: false,
+        cache:'cache',
+        contentType: false,
+        processData: false,
+      //   dataType: 'html', // on veut un retour JSON
+        success: function (id_doc) {
+            //alert('id doc : '+id_doc);
+             frd_ajoute_doc_central(id_doc,lib_document,id_central);
             // displayInfoPrincipalEquipement(id_central);
             frd_charge_et_affiche_doc_par_id_central(id_central);
 
         }, error: function () {
-            // alert('test');
+             
         }
 
 
     });
 
 }
-
-function frd_charge_doc_par_id_central(){
+function frd_ajoute_doc_central(id_doc,lib_document,id_central){
     $.ajax({
-        method: 'GET',
+        method: 'POST',
+        url: path_document + 'add_document_central',
+        data:  {'id_doc':id_doc,
+                'lib_doc':lib_document,
+                    'id_central':id_central},
+                
+          /*  'lib_document': lib_document,
+            'lien': lien_document  },*/
         async: false,
-        url: path_document + 'getDocuments/' + id_central,
-        dataType: 'json', // on veut un retour JSON
-        success: function (json) {
-            //alert('ok back end');
-            var i = 0;
-            var val;
-            listDocument[0] = [];
-            listDocument[1] = [];
-            listDocument[2] = [];
-          
-            //videZoneResultatPrincipal();   
-            $.each(json, function (index, value) { // pour chaque noeud JSON
-                //$('#bloc_resultat_access').append(value.id_access);
-                listDocument[0][i] = value.id_document;
-                listDocument[1][i] = value.lien_document;   //lib_access
-                listDocument[2][i] = value.lib_idocuement;   //login
-          
+        dataType: 'html', // on veut un retour JSON
+        success: function (request) {
+            //alert('request : '+request);
 
-
-                i++;
-            });
+        }, error: function () {
+            
         }
+
+
     });
 }
 

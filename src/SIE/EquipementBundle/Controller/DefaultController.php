@@ -21,4 +21,9 @@ class DefaultController extends Controller
         $this->setUpDataManager();
         return new JsonResponse($this->dataManager->getConstructeur());
     }
+    
+    public function getTypeAction(){
+        $this->setUpDataManager();
+        return new JsonResponse($this->dataManager->getType());
+    }
 }

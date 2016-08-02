@@ -62,23 +62,23 @@
         <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>
         {% endimage %}    
     </button>
-
+    <form id="form_doc" method='POST'>
     <br/>
     <br/>
     <b>Nom :</b>
     <br/><input id="lib_document" type="text" disabled="disabled">
     <br/>
     <br/>
-    <!--<b>Lien :</b>-->
+    <b>Lien :</b>
     <br/>
     <br/>
     <br/>
-    <a id='lien_document' href=''></a>
-    <input id="file_document" type="file" disabled="disabled"> 
+    <a id="lien_document" href="..">dowload</a>
+    <input  name="file_document"   id="file_document" type="file" disabled="disabled"> 
     <br/>
     <br/>
     <br/>
      
     <input id='id_document' type='hidden'>
-    
+    </form>
 </div>    

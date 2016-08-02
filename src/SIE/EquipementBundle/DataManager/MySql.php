@@ -292,4 +292,23 @@ WHERE ec.id_central_fk_ec=" . $id_central;
          
     }
 
+    function getType(){
+        $this->connectBDD();
+         $request="SELECT * FROM TYPE_EQUIPEMENT";
+         $result=$this->mysqli->query($request);
+         $return=null;
+         
+         if($result){
+            $i=0;
+             while ($row = $result->fetch_assoc()) {
+                 $return[$i]['lib_type']=$row['lib_type_equipement'];
+                 $return[$i]['id_type']=$row['id_type_equipement'];
+                 //echo 'ici';
+                 $i++;
+             }
+         }
+         
+         $this->closeBDD();
+         return $return;
+    }
 }

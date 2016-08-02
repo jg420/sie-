@@ -33,6 +33,9 @@ var constructeurs=[];
 constructeurs[0]=[];    //id_constructeur
 constructeurs[1]=[];    //lib_constructeur
 
+var type=[];
+type[0]=[];
+type[1]=[];
 
 var id_equipement="";  //equipement en cours
 
@@ -137,7 +140,7 @@ $(document).ready(function () {
 function fre_razUI() {
     $('#output_resumeResultat').html('');
     $('#select_equipement').html('');
-    $('#output_constructeur').html('');
+    $('#constructeur').html('');
     $('#lib_equipement').val('');
   //  $('#mac_equipement').val(' ');
     $('#version_equipement').val(' ');
@@ -160,6 +163,7 @@ function fre_prepareUiToAdd() {
     
     fre_loadConstructeur();
     fre_displayConstructeur();
+    fre_displayType();
     //alert('fin traitement');
     
 }
@@ -197,14 +201,47 @@ function fre_loadConstructeur(){
     });
 }
 
+function fre_loadType(){
+      $.ajax({
+        method: 'GET',
+        async: false,
+        url: pathEquipement+'getAllType',
+        //  data: {'id_central':id_central},
+        dataType: 'json', // on veut un retour JSON
+        success: function (json) {
+            var i = 0;
+            
+              $.each(json, function (index, value) { // pour chaque noeud JSON
+                type[0][i]=value.id_type;
+                type[1][i]=value.lib_type;
+ 
+                i++;
+            });
+            
+         
+            
+         
+        },
+        error: function () {
+
+
+        }
+    });
+}
+
 function fre_displayConstructeur(){
     //alert(constructeurs[0].length);
     for( i=0;i<constructeurs[0].length;i++){
-        $('#output_constructeur').append("<option value="+constructeurs[0][i]+">"+constructeurs[1][i]+"</option>")
+        $('#constructeur').append("<option value="+constructeurs[0][i]+">"+constructeurs[1][i]+"</option>")
         
     }
 }
 
+function fre_displayType(){
+    for(i=0;i<type[0].length;i++){
+        $('#type').append("<option value="+type[0][i]+">"+type[1][i]+"</option>");
+    }
+}
 
 function fre_displayEquipementByIdCentral(id_central) {
     //je suppose ici que l'id a ete checke en amont
@@ -217,17 +254,17 @@ function fre_displayEquipementByIdCentral(id_central) {
    var i;
         for(i=0;i<equipements[0].length;i++){
                 $('#select_equipement').append("<option value='" + equipements[0][i] + "'>" + equipements[1][i]+ "</option>");
-                $('#output_constructeur').append("<option  value='" + equipements[2][i] + "'>" + equipements[3][i] + "</option>");
+                $('#constructeur').append("<option  value='" + equipements[2][i] + "'>" + equipements[3][i] + "</option>");
                $('#version_equipement').val(equipements[6][i]);
                $('#num_serie_equipement').val(equipements[7][i]);
                 
  
                 //i++;
         }
-            libEquipement = $('#output_select_equipement option:checked').text();
+            libEquipement = $('#select_equipement option:checked').text();
                 $('#lib_equipement').val(libEquipement);
                 
-            //displayResultatDetail($('#output_select_equipement').val());
+            //displayResultatDetail($('#select_equipement').val());
             id_eq = $('#select_equipement option:selected').val();
             id_equipement=id_eq;
             libEq = $('#select_equipement option:selected').text();
@@ -242,7 +279,6 @@ function fre_displayEquipementByIdCentral(id_central) {
             //$('#lienPDF').attr('href', "../form/formCentral.php?pdf=" + val.id_central);
          
 }
-
 
 function fre_loadEquipementByIdCentral(id_central) {
     //je suppose ici que l'id a ete checke en amont
@@ -297,8 +333,8 @@ function fre_displayEquipementFromCache(id_equipement) {
             if(index!==-1){
                 //fre_razUI();
                 //$('#select_equipement').append("<option>"++"</option>")
-                $('#output_constructeur').html('');
-                $('#output_constructeur').append("<option>"+equipements[3][index]+"</option>");
+                $('#constructeur').html('');
+                $('#constructeur').append("<option>"+equipements[3][index]+"</option>");
                 
                 $('#lib_equipement').val('');
                 $('#lib_equipement').val(equipements[1][index]);
@@ -322,26 +358,30 @@ function fre_afficheEquipementPrecedent(){}
 
 function fre_active_input() {
     $('#select_equipement').attr('disabled', false);
-    $('#output_constructeur').attr('disabled', false);
+    $('#constructeur').attr('disabled', false);
     $('#lib_equipement').attr('disabled', false);
     $('#mac_equipement').attr('disabled', false);
     $('#version_equipement').attr('disabled', false);
 }
+
 function fre_desactive_input() {
     $('#select_equipement').attr('disabled', 'disabled');
-    $('#output_constructeur').attr('disabled', 'disabled');
+    $('#constructeur').attr('disabled', 'disabled');
     $('#lib_equipement').attr('disabled', 'disabled');
     $('#mac_equipement').attr('disabled', 'disabled');
     $('#version_equipement').attr('disabled', 'disabled');
 }
+
 function fre_afficheBtnValidAnnulle() {
     $('#btn_valid_modif_equipement').attr('style', 'visibilty:visible');
     $('#btn_annuler_modif_equipement').attr('style', 'visibilty:visible');
 }
+
 function fre_cacheBtnValidAnnulle() {
     $('#btn_valid_modif_equipement').attr('style', 'visibilty:hidden');
     $('#btn_annuler_modif_equipement').attr('style', 'visibilty:hidden');
 }
+
 function fre_gest_select_const(){
             id_eq = $('#select_equipement option:selected').val();
             alert(id_eq);
@@ -361,7 +401,7 @@ function fre_modifEquipement(){
     lib_equipement = $('#lib_equipement').text();
     num_serie_equipement = $('#num_serie_equipement').text();
     version_equipement = $('#version_equipement').text();
-    constructeur = $('#output_constructeur').text();
+    constructeur = $('#constructeur').text();
      //alert(id_eq);
     $.ajax({
         method: 'POST',
