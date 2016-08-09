@@ -15,8 +15,8 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f4e4a33cbfa671363e841dc2af75361a85789174010ebe8e3a54589bd2cefd03 = $this->env->getExtension("native_profiler");
-        $__internal_f4e4a33cbfa671363e841dc2af75361a85789174010ebe8e3a54589bd2cefd03->enter($__internal_f4e4a33cbfa671363e841dc2af75361a85789174010ebe8e3a54589bd2cefd03_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIECentralBundle:form:result.html.twig"));
+        $__internal_e86d9b8caa69562c24279c2838607d22d291e0892eeaa4e961bb4a623efd027e = $this->env->getExtension("native_profiler");
+        $__internal_e86d9b8caa69562c24279c2838607d22d291e0892eeaa4e961bb4a623efd027e->enter($__internal_e86d9b8caa69562c24279c2838607d22d291e0892eeaa4e961bb4a623efd027e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIECentralBundle:form:result.html.twig"));
 
         // line 2
         echo "
@@ -25,53 +25,9 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
     <br/>
     <br/>
     <br/>
-     <button id=\"btn_ajout_central\" class=\"btn_ajout\" ng-model=\"btn_ajout_central\" >
-     ";
-        // line 9
-        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
-            // asset "a935514_0"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_a935514_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/a935514_btn_ajout_1.jpeg");
-            // line 11
-            echo "       <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"AJout\"/>
     ";
-        } else {
-            // asset "a935514"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_a935514") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/a935514.jpeg");
-            echo "       <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"AJout\"/>
-    ";
-        }
-        unset($context["asset_url"]);
-        // line 13
-        echo "    </button>
-    
-    <button id=\"btn_sup_central\" class=\"btn_sup\"  ng-model=\"btn_sup_central\">
-     ";
-        // line 16
-        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
-            // asset "516a1e4_0"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_516a1e4_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/516a1e4_btn_supr_1.png");
-            // line 18
-            echo "       <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"Supr\"/>
-    ";
-        } else {
-            // asset "516a1e4"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_516a1e4") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/516a1e4.png");
-            echo "       <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"Supr\"/>
-    ";
-        }
-        unset($context["asset_url"]);
-        // line 20
-        echo "    </button>
-    
-    <br/>
+        // line 22
+        echo "    <br/>
     <button id=\"btn_last_central\" class=\"btn_precedent\"  ng-model=\"btn_last_central\">
         ";
         // line 24
@@ -145,7 +101,7 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
         echo "    </button>
     <br/>
     
-    <button ng-model=\"btn_valid_modif_central\" id=\"btn_valid_central\"  class=\"btn_modif\"  value=\"valider\" style=\"visibility: hidden\">
+    <button ng-model=\"btn_valid_modif_central\" id=\"btn_valid_central\"  class=\"btn_valider\"   value=\"valider\" style=\"visibility: hidden\">
         ";
         // line 48
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
@@ -248,7 +204,7 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
 
 </div>";
         
-        $__internal_f4e4a33cbfa671363e841dc2af75361a85789174010ebe8e3a54589bd2cefd03->leave($__internal_f4e4a33cbfa671363e841dc2af75361a85789174010ebe8e3a54589bd2cefd03_prof);
+        $__internal_e86d9b8caa69562c24279c2838607d22d291e0892eeaa4e961bb4a623efd027e->leave($__internal_e86d9b8caa69562c24279c2838607d22d291e0892eeaa4e961bb4a623efd027e_prof);
 
     }
 
@@ -264,7 +220,7 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
 
     public function getDebugInfo()
     {
-        return array (  240 => 104,  237 => 102,  193 => 59,  179 => 58,  175 => 56,  169 => 52,  155 => 50,  151 => 48,  145 => 44,  131 => 42,  127 => 40,  122 => 37,  108 => 35,  104 => 33,  96 => 27,  82 => 26,  78 => 24,  72 => 20,  58 => 18,  54 => 16,  49 => 13,  35 => 11,  31 => 9,  22 => 2,);
+        return array (  196 => 104,  193 => 102,  149 => 59,  135 => 58,  131 => 56,  125 => 52,  111 => 50,  107 => 48,  101 => 44,  87 => 42,  83 => 40,  78 => 37,  64 => 35,  60 => 33,  52 => 27,  38 => 26,  34 => 24,  30 => 22,  22 => 2,);
     }
 }
 /* {# SIE/CentralBundle/Resources/views/form/result.html.twig #}*/
@@ -274,20 +230,20 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
 /*     <br/>*/
 /*     <br/>*/
 /*     <br/>*/
-/*      <button id="btn_ajout_central" class="btn_ajout" ng-model="btn_ajout_central" >*/
+/*     {# <button id="btn_ajout_central" class="btn_ajout" ng-model="btn_ajout_central" >*/
 /*      {% image '@SIECoreBundle/Resources/public/images/btn_ajout.jpeg'*/
 /*        %}*/
 /*        <img  class="img-background-button"    src="{{ asset_url }}"  alt="AJout"/>*/
 /*     {% endimage %}*/
 /*     </button>*/
 /*     */
-/*     <button id="btn_sup_central" class="btn_sup"  ng-model="btn_sup_central">*/
+/*     <button id="btn_sup_central" class="btn_sup"  ng-model="btn_sup_central" >*/
 /*      {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'*/
 /*        %}*/
 /*        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>*/
 /*     {% endimage %}*/
 /*     </button>*/
-/*     */
+/*     #}*/
 /*     <br/>*/
 /*     <button id="btn_last_central" class="btn_precedent"  ng-model="btn_last_central">*/
 /*         {% image '@SIECoreBundle/Resources/public/images/btn_gauche.jpeg'*/
@@ -313,7 +269,7 @@ class __TwigTemplate_4426c65cec9be857e84a7edd2edb65df366a01c7d0996ed222b2db844df
 /*     </button>*/
 /*     <br/>*/
 /*     */
-/*     <button ng-model="btn_valid_modif_central" id="btn_valid_central"  class="btn_modif"  value="valider" style="visibility: hidden">*/
+/*     <button ng-model="btn_valid_modif_central" id="btn_valid_central"  class="btn_valider"   value="valider" style="visibility: hidden">*/
 /*         {% image '@SIECoreBundle/Resources/public/images/btn_valider.jpeg'*/
 /*        %}*/
 /*         <img class="img-background-button"   src="{{ asset_url }}"  alt="valider"/>*/

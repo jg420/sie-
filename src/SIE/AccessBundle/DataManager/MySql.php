@@ -167,7 +167,7 @@ AND p.id_protocol=a.id_protocol";
         //
         $request="SELECT  id_access FROM ACCESS "
                 . "WHERE adresse_ip LIKE '".$adresse_ip."'"
-                ." AND id_protocol =1";
+                ." AND id_protocol =".$id_protocol;
                 //." AND id_protocol =".$id_protocol;
         $result=$this->mysqli->query($request);
         

@@ -26,6 +26,9 @@ select_central:
     path:     /selectCentral/{id}/
     defaults: { _controller: "SIECentralBundle:Admin:selectCentral" }
     
+get_all_societe:
+    path:     /getAllSociete
+    defaults: { _controller: "SIECentralBundle:Admin:get_all_societe" }
  
     
 

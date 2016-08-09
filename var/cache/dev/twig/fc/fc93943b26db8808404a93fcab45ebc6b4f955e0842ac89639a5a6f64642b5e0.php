@@ -15,13 +15,13 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b = $this->env->getExtension("native_profiler");
-        $__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b->enter($__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEDocumentBundle:Default:result_document.html.twig"));
+        $__internal_20304c9028c6e502a85d9c62fe365285048796a64196ffa7cc426168cffda11e = $this->env->getExtension("native_profiler");
+        $__internal_20304c9028c6e502a85d9c62fe365285048796a64196ffa7cc426168cffda11e->enter($__internal_20304c9028c6e502a85d9c62fe365285048796a64196ffa7cc426168cffda11e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEDocumentBundle:Default:result_document.html.twig"));
 
         // line 2
         echo "
 <div  id=\"bloc_resultat_document\" ng-controller=\"result_document_controller\">
-    <b class=\"titreSection\">Documents</b>
+    <b class=\"titreSection\" id='titreDocument'>Documents</b>
     <p id=\"lib_central_document\" class=\"lib_central\"></p>
     
 
@@ -51,37 +51,17 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
         // line 16
         echo "    </button>
     
-    <button ng-model=\"btn_sup_document\" id=\"btn_sup_document\" class=\"btn_sup\"  >
-     ";
-        // line 19
-        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
-            // asset "516a1e4_0"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_516a1e4_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/516a1e4_btn_supr_1.png");
-            // line 21
-            echo "       <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"Supr\"/>
     ";
-        } else {
-            // asset "516a1e4"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_516a1e4") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/516a1e4.png");
-            echo "       <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"Supr\"/>
-    ";
-        }
-        unset($context["asset_url"]);
-        // line 23
-        echo "    </button>
-    
+        // line 25
+        echo "    
     <br/>
     <button ng-model=\"btn_last_document\" id=\"btn_last_document\" class=\"btn_precedent\" >
         ";
-        // line 27
+        // line 28
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "67d988a_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_67d988a_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/67d988a_btn_gauche_1.jpeg");
-            // line 29
+            // line 30
             echo "        <img  class=\"img-background-button\"    src=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"  alt=\"Precedent\"/>
@@ -95,7 +75,7 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
         ";
         }
         unset($context["asset_url"]);
-        // line 30
+        // line 31
         echo "       
     </button>
     
@@ -103,11 +83,11 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
     
     <button ng-model=\"btn_modif_document\" id=\"btn_modif_document\" class=\"btn_modifier\"  >
      ";
-        // line 36
+        // line 37
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "cae2646_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_cae2646_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/cae2646_btn_modif_1.jpeg");
-            // line 38
+            // line 39
             echo "       <img  class=\"img-background-button\"    src=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"  alt=\"Modif\"/>
@@ -121,16 +101,16 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
     ";
         }
         unset($context["asset_url"]);
-        // line 40
+        // line 41
         echo "    </button>
     
     <button ng-model=\"btn_next_document\" id=\"btn_next_document\"  class=\"btn_suivant\"  value=\"suivant\" >
         ";
-        // line 43
+        // line 44
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "34537ea_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_34537ea_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/34537ea_droite_1.jpeg");
-            // line 45
+            // line 46
             echo "        <img class=\"img-background-button\"    src=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"  alt=\"Suivant\"/>
@@ -144,18 +124,18 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
         ";
         }
         unset($context["asset_url"]);
-        // line 47
+        // line 48
         echo "    </button>
     <br/>
     
     
     <button ng-model=\"btn_valid_modif_document\" id=\"btn_valid_modif_document\"  class=\"btn_suivant\"  style=\"visibility: hidden\">
         ";
-        // line 52
+        // line 53
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "aef7376_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_aef7376_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/aef7376_btn_valider_1.jpeg");
-            // line 54
+            // line 55
             echo "        <img class=\"img-background-button\"   src=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"  alt=\"valider\"/>
@@ -169,17 +149,17 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
         ";
         }
         unset($context["asset_url"]);
-        // line 56
+        // line 57
         echo "    </button>
     
     
-    <button ng-model=\"btn_annuler_modif_document\" id=\"btn_annuler_modif_document\" class=\"btn_annuler\" style=\"visibility: hidden\">
+    <button ng-model=\"btn_annuler_modif_document\" id=\"btn_annuler_document\" class=\"btn_annuler\" style=\"visibility: hidden\">
      ";
-        // line 60
+        // line 61
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "02f85ee_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_02f85ee_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/02f85ee_btn_annuler_1.jpeg");
-            // line 62
+            // line 63
             echo "        <img class=\"img-background-button\"   src=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\"  alt=\"annuler\"/>
@@ -193,7 +173,7 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
         ";
         }
         unset($context["asset_url"]);
-        // line 63
+        // line 64
         echo "    
     </button>
     <form id=\"form_doc\" method='POST'>
@@ -205,9 +185,12 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
     <br/>
     <b>Lien :</b>
     <br/>
+    <a id=\"lien_document\" href=\"..\"></a>
     <br/>
     <br/>
-    <a id=\"lien_document\" href=\"..\">dowload</a>
+     <br/>
+    <br/>
+     
     <input  name=\"file_document\"   id=\"file_document\" type=\"file\" disabled=\"disabled\"> 
     <br/>
     <br/>
@@ -217,7 +200,7 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
     </form>
 </div>    ";
         
-        $__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b->leave($__internal_fc8f97ef1d679f4ded6ece3e20df0014f0244e35f93016f4babf8c07dd5f763b_prof);
+        $__internal_20304c9028c6e502a85d9c62fe365285048796a64196ffa7cc426168cffda11e->leave($__internal_20304c9028c6e502a85d9c62fe365285048796a64196ffa7cc426168cffda11e_prof);
 
     }
 
@@ -233,13 +216,13 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 
     public function getDebugInfo()
     {
-        return array (  197 => 63,  183 => 62,  179 => 60,  173 => 56,  159 => 54,  155 => 52,  148 => 47,  134 => 45,  130 => 43,  125 => 40,  111 => 38,  107 => 36,  99 => 30,  85 => 29,  81 => 27,  75 => 23,  61 => 21,  57 => 19,  52 => 16,  38 => 14,  34 => 12,  22 => 2,);
+        return array (  177 => 64,  163 => 63,  159 => 61,  153 => 57,  139 => 55,  135 => 53,  128 => 48,  114 => 46,  110 => 44,  105 => 41,  91 => 39,  87 => 37,  79 => 31,  65 => 30,  61 => 28,  56 => 25,  52 => 16,  38 => 14,  34 => 12,  22 => 2,);
     }
 }
 /* {# SIE/DocumentBundle/Resources/views/form/result_document.html.twig #}*/
 /* */
 /* <div  id="bloc_resultat_document" ng-controller="result_document_controller">*/
-/*     <b class="titreSection">Documents</b>*/
+/*     <b class="titreSection" id='titreDocument'>Documents</b>*/
 /*     <p id="lib_central_document" class="lib_central"></p>*/
 /*     */
 /* */
@@ -253,12 +236,13 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 /*     {% endimage %}*/
 /*     </button>*/
 /*     */
+/*     {#*/
 /*     <button ng-model="btn_sup_document" id="btn_sup_document" class="btn_sup"  >*/
 /*      {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'*/
 /*        %}*/
 /*        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>*/
 /*     {% endimage %}*/
-/*     </button>*/
+/*     </button>#}*/
 /*     */
 /*     <br/>*/
 /*     <button ng-model="btn_last_document" id="btn_last_document" class="btn_precedent" >*/
@@ -294,7 +278,7 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 /*     </button>*/
 /*     */
 /*     */
-/*     <button ng-model="btn_annuler_modif_document" id="btn_annuler_modif_document" class="btn_annuler" style="visibility: hidden">*/
+/*     <button ng-model="btn_annuler_modif_document" id="btn_annuler_document" class="btn_annuler" style="visibility: hidden">*/
 /*      {% image '@SIECoreBundle/Resources/public/images/btn_annuler.jpeg'*/
 /*        %}*/
 /*         <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>*/
@@ -309,9 +293,12 @@ class __TwigTemplate_0074c8d843f8116ba3cfe6730766ce947b5fe0dddc7455fc12f9917efdf
 /*     <br/>*/
 /*     <b>Lien :</b>*/
 /*     <br/>*/
+/*     <a id="lien_document" href=".."></a>*/
 /*     <br/>*/
 /*     <br/>*/
-/*     <a id="lien_document" href="..">dowload</a>*/
+/*      <br/>*/
+/*     <br/>*/
+/*      */
 /*     <input  name="file_document"   id="file_document" type="file" disabled="disabled"> */
 /*     <br/>*/
 /*     <br/>*/

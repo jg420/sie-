@@ -50,12 +50,14 @@ $(document).ready(function () {
 
     $('#chk_tri_societe').click(function () {
         if ($('#chk_tri_societe').is(':checked')) {
-            list_code_ana = listCentral[5];
-            list_code_ana.sort();
+            //list_lib_societe = listCentral[7];
+            listCentral[7].sort();
             $('#chk_tri_lib_central').attr('checked', false);
+            
         } else {
             listCentral[1].sort();
             $('#chk_tri_lib_central').attr('checked', true);
+             
         }
         $('#chk_tri_code_ana').attr('checked', false);
 
@@ -84,8 +86,8 @@ $(document).ready(function () {
             $('#btn_modif_central').attr('disabled', true);
             $('#select_output_societe').attr('disabled', true);
 
-            loadSocieteInSelect();
-
+            //loadSocieteInSelect();
+            frc_affiche_societe_dans_selection();
         }
 
     });
@@ -206,12 +208,6 @@ function frc_loadAndDisplayResultByLibCentral() {
         $('#output_id_direction').val(id_direction);
         $('#select_output_societe').append("<option>" + societe + "</option>")
 
-        lib_societe = listCentral[7][index1];
-        $('#select_output_societe').html('');
-        $('#select_output_societe').append("<option>\n\
-                                    " + lib_societe
-                +
-                "</option>");
 
         fre_displayEquipementByIdCentral(id_central);
                 frd_charge_et_affiche_doc_par_id_central(id_central);
@@ -226,6 +222,56 @@ function frc_loadAndDisplayResultByLibCentral() {
 
 }
 
+function frc_loadAndDisplayResultByLibSociete(){
+    lib_societe=$('#input_societe').val();
+    //alert(lib_societe);
+    index1 =listCentral[7].indexOf(lib_societe);
+     if ( index1!== -1) {
+       
+        //alert('passe ici');
+       // = listCentral[7].indexOf(lib_central);
+        index_listCentral = index1;
+        //Je recupere l'id et le type depuis la recherche precedente
+        id_central = listCentral[0][index1];
+        lib_type_central = listCentral[2][index1];
+        lib_cex = listCentral[3][index1];
+        lib_zone = listCentral[4][index1];
+        lib_code = listCentral[5][index1];
+        id_direction = listCentral[6][index1];
+        societe = listCentral[7][index1];
+         lib_central= listCentral[1][index1];
+        //j affiche les valeur dans le bloc resultat
+
+        //$('#lbl_contrat_fiche_contrat').html(lib_central);
+        
+        frc_setLibCentral(lib_central);
+         $('#output_lib_central').val(lib_central);
+        $('#output_select_type_central').val(lib_type_central);
+        
+      
+
+        
+        $('#output_id_central').val(id_central);
+        $('#output_lib_cex').val(lib_cex);
+        $('#output_lib_zone').val(lib_zone);
+        $('#output_code_analytique').val(lib_code);
+        //alert('code '+lib_code);
+        $('#output_id_direction').val(id_direction);
+        $('#select_output_societe').append("<option>" + societe + "</option>")
+        //aler('societe : '+societe);
+        
+        fre_displayEquipementByIdCentral(id_central);
+                frd_charge_et_affiche_doc_par_id_central(id_central);
+         //J'efface les autres champs de recherche pour mettre au propre
+        $('#input_superficie_central').val('');
+        $('#input_lib_cex').val('');
+        $('#titreSection_result').html("Centrale " + (index1 + 1) + " / " + listCentral[1].length);
+     }else{
+     }
+
+    videZoneRecherche();
+    
+}
 
 function loadAndDisplayResultById() {
 
@@ -256,8 +302,8 @@ function loadAndDisplayResultById() {
 
         lib_societe = listCentral[7][index1];
         $('#select_output_societe').html('');
-        $('#select_output_societe').append("<option>\n\
-                                    " + lib_societe
+        $('#select_output_societe').append("<option>"
+                                     + lib_societe
                 +
                 "</option>");
 
@@ -366,9 +412,17 @@ function modifCentral() {
     //loadAndDisplayResultById();
 }
 
+function frc_affiche_societe_dans_selection(){
+    for(i=0;i<listSociete[0].length;i++){
+         $('#select_output_societe').append("<option value=" + listSociete[0][i]+ " >" + listSociete[1][i] + "</option>");
+    }
+    $('#select_output_societe').attr('disabled',false);
+}
 
-function loadSocieteInSelect() {
+function loadAndDisplaySocieteInSelect() {
     //pathSociete="http://127.0.0.1/ref/web/app_dev.php/equipement/";
+    
+   
     $.ajax({
         url: 'getSociete',
         dataType: 'json', // on veut un retour JSON

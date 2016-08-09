@@ -75,11 +75,11 @@ class MySql {
 
     function ajoute_document($lib_doc) {
         $this->connectBDD();
-        $path_upload_file="/var/www/html/uploads/";
-        $request = "INSERT INTO DOCUMENT (lib_document,lien_document) "
+        $path_upload_file="/uploads/";
+        $request1 = "INSERT INTO DOCUMENT (lib_document,lien_document) "
                 . "VALUES ('" . $lib_doc . "','".$path_upload_file.$lib_doc."')";
         
-        $this->mysqli->query($request);
+        $this->mysqli->query($request1);
 
         $request = "SELECT id_document FROM DOCUMENT  "
                 . "WHERE lib_document LIKE '" . $lib_doc . "'";
@@ -87,30 +87,29 @@ class MySql {
         $result = $this->mysqli->query($request);
         if ($result) {
             $i = 0;
-            if ($row = $result->fetch_assoc()) {
+           $row = $result->fetch_assoc() ;
                 $result = $row['id_document'];
-            }
+             
 
             $this->closeBDD();
-            return $result;
-        }
+            
+        } return $result;
     }
 
     function add_document_central($lib_doc, $id_doc, $id_central) {
         $this->connectBDD();
         $id_document=$id_doc+0;
-        $path_uploaded_file="/var/www/html/uploads/";
-        $request = "UPDATE DOCUEMENT SET lib_document='".$lib_doc           
-                . " WHERE id_document=".$id_document;
+         $request1 = "UPDATE DOCUMENT SET lib_document='".$lib_doc           
+                . "' WHERE id_document=".$id_document;
                 ;
-        $this->mysqli->query($request);
+        $this->mysqli->query($request1);
         
         $request = "INSERT INTO CORRESPONDACE_DOCUMENTS_CENTRAL (id_central,id_document) "
                 . "VALUES (" . $id_central. ",".$id_doc.")";
         $this->mysqli->query($request);
         
          $this->closeBDD();
-         return $request;
+         return $request1;
     }
 
 }

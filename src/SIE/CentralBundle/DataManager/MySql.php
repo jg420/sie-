@@ -194,7 +194,7 @@ SET code_analytique = '".$code_ana."',
     }
     function getSociete(){
     $this->connectBDD();
-    global $mysqli;
+    
 
    $request="SELECT * FROM SOCIETE";
    $result = $this->mysqli->query($request);
@@ -218,5 +218,7 @@ SET code_analytique = '".$code_ana."',
        $this->closeBDD();
     return $return;  
 }
+
+ 
 
 }

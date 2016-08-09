@@ -25,7 +25,13 @@ listCentral[5] = [];  // code analytique
 listCentral[6] = []; // id direction
 listCentral[7] = [];  // societe
 
+var listSociete=[];
+
+listSociete[0]=[]; //id_societe
+listSociete[1]=[];  //lib_societe
+
 var listCex = [];
+
 
 //sert en cas d'annulation de modification 
 var id_central_avant_modif;
@@ -41,9 +47,11 @@ var lastClick = 0;
 $(document).ready(function () {
 
     loadAllCentralforAutocompletion();
+    loadAllSocieteForAutocompletion();
+    
     $('#input_lib_central').autocomplete({
         source: listCentral[1],
-        autoFocus: true,
+        autoFocus: false,
         select: function (event, ui) {
 
             //je demande a form_result_central d'afficher les resultat
@@ -75,10 +83,11 @@ $(document).ready(function () {
     });
 
     $('#input_societe').autocomplete({
-        source: listCentral[7],
+        source: listSociete[1],
         autoFocus: true,
         select: function (event, ui) {
-            alert("a implementer ....");
+            //alert("a implementer ....");
+            frc_loadAndDisplayResultByLibSociete();
             //loadAndDisplayResultByCodeAna();
         }
     });
@@ -86,6 +95,30 @@ $(document).ready(function () {
 
 });
 
+function loadAllSocieteForAutocompletion(){
+        $.ajax({
+        url: 'getAllSociete',
+        // url: '../form/formCentral.php',
+        //data: {'central':'all'},
+        dataType: 'json', // on veut un retour JSON
+        success: function (json) {
+            var i = 0;
+
+            $.each(json, function (index, value) { // pour chaque noeud JSON         
+                // alert("lib central :"+value.libCentral);
+                listSociete[0] [i] = value.id_societe;
+                listSociete[1] [i] = value.lib_societe;
+                
+                i++;
+            });
+
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+        }
+    });
+}
 function loadAllCentralforAutocompletion() {
 
     $.ajax({
@@ -111,8 +144,6 @@ function loadAllCentralforAutocompletion() {
 
                 i++;
             });
-
-
 
         },
         error: function (xhr, ajaxOptions, thrownError) {

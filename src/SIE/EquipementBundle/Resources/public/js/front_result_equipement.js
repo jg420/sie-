@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var pathEquipement="http://127.0.0.1/ref/web/app_dev.php/equipement/"
+var pathEquipement = "http://127.0.0.1/ref/web/app_dev.php/equipement/"
 
 var equipements = [];
 
@@ -27,83 +27,98 @@ equipements[4] = [];  //id_type
 equipements[5] = [];  //lib_type
 equipements[5] = [];  //id_version
 equipements[6] = [];  //version
-equipements[7]=[];     //num serie
+equipements[7] = [];     //num serie
 
-var constructeurs=[];
-constructeurs[0]=[];    //id_constructeur
-constructeurs[1]=[];    //lib_constructeur
+var constructeurs = [];
+constructeurs[0] = [];    //id_constructeur
+constructeurs[1] = [];    //lib_constructeur
 
-var type=[];
-type[0]=[];
-type[1]=[];
+var typeEquipement = [];
+typeEquipement[0] = [];
+typeEquipement[1] = [];
 
-var id_equipement="";  //equipement en cours
+var id_equipement = "";  //equipement en cours
 
-var msgNoCentral="Pas de central selectioné !";
+var msgNoCentral = "Pas de central selectioné !";
 
-var newEquipement=false;    
+var newEquipement = false;
 
 $(document).ready(function () {
 
     $('#btn_ajout_equipement').click(function () {
-        if(id_central!==""){
-            fre_prepareUiToAdd();    
-        }else{
-            
+        if (id_central !== "") {
+            newEquipement = true;
+            fre_prepareUiToAdd();
+
+        } else {
+
             alert(msgNoCentral);
         }
-        
+
     });
     $('#btn_sup_equipement').click(function () {
-        if(id_central!==""){
-             
-        }else{
-            
+        if (id_central !== "") {
+            fre_addEquipement();
+
+        } else {
+
             alert(msgNoCentral);
         }
     });
     $('#btn_last_equipement').click(function () {
-        if(id_central!==""){
-             
-        }else{
-            
+        if (id_central !== "") {
+
+        } else {
+
             alert(msgNoCentral);
         }
     });
     $('#btn_modif_equipement').click(function () {
-        if(id_central!==""){
-             fre_active_input();
-             fre_afficheBtnValidAnnulle();
-             
-        }else{
-            
+        if (id_central !== "") {
+            fre_active_input();
+            fre_afficheBtnValidAnnulle();
+            fre_loadConstructeur();
+            fre_displayConstructeur();
+            fre_loadType();
+            fre_displayType();
+
+        } else {
+
             alert(msgNoCentral);
         }
     });
     $('#btn_next_equipement').click(function () {
-        if(id_central!==""){
-             
-        }else{
-            
+        if (id_central !== "") {
+
+        } else {
+
             alert(msgNoCentral);
         }
     });
     $('#btn_valid_modif_equipement').click(function () {
-       if(newEquipement){
-       
-    }else{
-         if(id_central!==""){
-             //validation de la modification
-             
-             fre_modifEquipement();
-        }else{
-            
+
+        if (id_central !== "") {
+            //validation de la modification
+
+            if (newEquipement) {
+                fre_addEquipement();
+
+
+            } else {
+                fre_modifEquipement();
+
+
+            }
+        } else {
+
             alert(msgNoCentral);
+
         }
-    }
+        fre_desactive_input();
+        fre_cacheBtnValidAnnulle();
     });
     $('#btn_annuler_modif_equipement').click(function () {
-        
+
 
         //UI
         $('#btn_valid_modif_equipement').attr('style', 'visibility:hidden');
@@ -116,24 +131,24 @@ $(document).ready(function () {
 
     });
 
-    
-    $('#select_equipement').change(function () {
-         id_eq = $('#select_equipement option:selected').val();
-            id_equipement=id_eq;
-            libEq = $('#select_equipement option:selected').text();
-                       
 
-            
-            //fre_displayEquipementByIdEquipement(id_eq);
-            
-            frea_displayAccessByIdEquipement(id_eq);
-            frea_setLibEquipement(libEq);   
-           
-          fre_displayEquipementFromCache(id_eq);
-          // alert("1er "+id_eq);
-          
-     });
-            
+    $('#select_equipement').change(function () {
+        id_eq = $('#select_equipement option:selected').val();
+        id_equipement = id_eq;
+        libEq = $('#select_equipement option:selected').text();
+
+
+
+        //fre_displayEquipementByIdEquipement(id_eq);
+
+        frea_displayAccessByIdEquipement(id_eq);
+        frea_setLibEquipement(libEq);
+
+        fre_displayEquipementFromCache(id_eq);
+        // alert("1er "+id_eq);
+
+    });
+
 
 });
 
@@ -142,30 +157,28 @@ function fre_razUI() {
     $('#select_equipement').html('');
     $('#constructeur').html('');
     $('#lib_equipement').val('');
-  //  $('#mac_equipement').val(' ');
+    //  $('#mac_equipement').val(' ');
     $('#version_equipement').val(' ');
 }
 
 function fre_prepareUiToAdd() {
+
     
-    if(id_central!==""){
         id_equipement = $('#id_equipement').val();
-    
-    fre_razUI();
 
-    fre_active_input();
+        fre_razUI();
 
-    fre_afficheBtnValidAnnulle();
-    }else{
-        msg="Pas de central selectionné"
-        alert(msg);
-    }
-    
+        fre_active_input();
+
+        fre_afficheBtnValidAnnulle();
+   
+
     fre_loadConstructeur();
     fre_displayConstructeur();
+    fre_loadType();
     fre_displayType();
     //alert('fin traitement');
-    
+
 }
 
 function fre_setLibCentral(libCentral) {
@@ -173,26 +186,26 @@ function fre_setLibCentral(libCentral) {
     $('.lib_central').html(libCentral);
 }
 
-function fre_loadConstructeur(){
-      $.ajax({
+function fre_loadConstructeur() {
+    $.ajax({
         method: 'GET',
         async: false,
-        url: pathEquipement+'getAllConstructeur',
+        url: pathEquipement + 'getAllConstructeur',
         //  data: {'id_central':id_central},
         dataType: 'json', // on veut un retour JSON
         success: function (json) {
             var i = 0;
-            
-              $.each(json, function (index, value) { // pour chaque noeud JSON
-                constructeurs[0][i]=value.id_constructeur;
-                constructeurs[1][i]=value.lib_constructeur;
- 
+
+            $.each(json, function (index, value) { // pour chaque noeud JSON
+                constructeurs[0][i] = value.id_constructeur;
+                constructeurs[1][i] = value.lib_constructeur;
+
                 i++;
             });
-            
-         
-            
-         
+
+
+
+
         },
         error: function () {
 
@@ -201,26 +214,26 @@ function fre_loadConstructeur(){
     });
 }
 
-function fre_loadType(){
-      $.ajax({
+function fre_loadType() {
+    $.ajax({
         method: 'GET',
         async: false,
-        url: pathEquipement+'getAllType',
+        url: pathEquipement + 'getAllType',
         //  data: {'id_central':id_central},
         dataType: 'json', // on veut un retour JSON
         success: function (json) {
             var i = 0;
-            
-              $.each(json, function (index, value) { // pour chaque noeud JSON
-                type[0][i]=value.id_type;
-                type[1][i]=value.lib_type;
- 
+
+            $.each(json, function (index, value) { // pour chaque noeud JSON
+                typeEquipement[0][i] = value.id_type;
+                typeEquipement[1][i] = value.lib_type;
+
                 i++;
             });
-            
-         
-            
-         
+
+
+
+
         },
         error: function () {
 
@@ -229,17 +242,19 @@ function fre_loadType(){
     });
 }
 
-function fre_displayConstructeur(){
+function fre_displayConstructeur() {
     //alert(constructeurs[0].length);
-    for( i=0;i<constructeurs[0].length;i++){
-        $('#constructeur').append("<option value="+constructeurs[0][i]+">"+constructeurs[1][i]+"</option>")
-        
+    for (i = 0; i < constructeurs[0].length; i++) {
+        $('#constructeur').append("<option value=" + constructeurs[0][i] + ">" + constructeurs[1][i] + "</option>")
+
     }
 }
 
-function fre_displayType(){
-    for(i=0;i<type[0].length;i++){
-        $('#type').append("<option value="+type[0][i]+">"+type[1][i]+"</option>");
+function fre_displayType() {
+    $('#type_equipement').attr('disabled', false);
+    //alert('ici action');
+    for (i = 0; i < typeEquipement[0].length; i++) {
+        $('#type_equipement').append("<option value=" + typeEquipement[0][i] + ">" + typeEquipement[1][i] + "</option>");
     }
 }
 
@@ -248,76 +263,78 @@ function fre_displayEquipementByIdCentral(id_central) {
     // alert('refresh :'+id_central);
 
     //alert('id central: '+id_central);
-   fre_razUI();
-   fre_loadEquipementByIdCentral(id_central);
-   
-   var i;
-        for(i=0;i<equipements[0].length;i++){
-                $('#select_equipement').append("<option value='" + equipements[0][i] + "'>" + equipements[1][i]+ "</option>");
-                $('#constructeur').append("<option  value='" + equipements[2][i] + "'>" + equipements[3][i] + "</option>");
-               $('#version_equipement').val(equipements[6][i]);
-               $('#num_serie_equipement').val(equipements[7][i]);
-                
- 
-                //i++;
-        }
-            libEquipement = $('#select_equipement option:checked').text();
-                $('#lib_equipement').val(libEquipement);
-                
-            //displayResultatDetail($('#select_equipement').val());
-            id_eq = $('#select_equipement option:selected').val();
-            id_equipement=id_eq;
-            libEq = $('#select_equipement option:selected').text();
-            frea_displayAccessByIdEquipement(id_eq);
-            frea_setLibEquipement(libEq);
-            
-            //   displayResultatDetail(val.id_equipement);
-            $('#output_resumeResultat').append("<br/><br/><b>" + i + " Equipement(s)</b>");
-            //alert(i+" nombre d equipement");
-            $('#id_equipement').val(id_eq);
-            $('#lib_equipement').val(libEq);
-            //$('#lienPDF').attr('href', "../form/formCentral.php?pdf=" + val.id_central);
-         
+    fre_razUI();
+    fre_loadEquipementByIdCentral(id_central);
+    //fre_loadType();
+
+    var i;
+    for (i = 0; i < equipements[0].length; i++) {
+        $('#select_equipement').append("<option value='" + equipements[0][i] + "'>" + equipements[1][i] + "</option>");
+        $('#constructeur').append("<option  value='" + equipements[2][i] + "'>" + equipements[3][i] + "</option>");
+        $('#type_equipement').append("<option  value='" + equipements[4][i] + "'>" + equipements[5][i] + "</option>");
+        $('#version_equipement').val(equipements[6][i]);
+        $('#num_serie_equipement').val(equipements[7][i]);
+
+
+        //i++;
+    }
+    libEquipement = $('#select_equipement option:checked').text();
+    $('#lib_equipement').val(libEquipement);
+
+    //displayResultatDetail($('#select_equipement').val());
+    id_eq = $('#select_equipement option:selected').val();
+    id_equipement = id_eq;
+    libEq = $('#select_equipement option:selected').text();
+    frea_displayAccessByIdEquipement(id_eq);
+    frea_setLibEquipement(libEq);
+
+    //   displayResultatDetail(val.id_equipement);
+    $('#output_resumeResultat').append("<br/><br/><b>" + i + " Equipement(s)</b>");
+    //alert(i+" nombre d equipement");
+    $('#id_equipement').val(id_eq);
+    $('#lib_equipement').val(libEq);
+    //$('#lienPDF').attr('href', "../form/formCentral.php?pdf=" + val.id_central);
+
 }
 
 function fre_loadEquipementByIdCentral(id_central) {
     //je suppose ici que l'id a ete checke en amont
- 
-   fre_razUI();
- 
+
+    fre_razUI();
+
     $.ajax({
         method: 'GET',
-        async: false,       //TRES TRES IMPORTANT
-        url: pathEquipement+'getEquipements/' + id_central,
+        async: false, //TRES TRES IMPORTANT
+        url: pathEquipement + 'getEquipements/' + id_central,
         //  data: {'id_central':id_central},
         dataType: 'json', // on veut un retour JSON
         success: function (json) {
             var i = 0;
             var val;
-   equipements[0]=[];
-                equipements[1]=[];
-                equipements[2]=[];
-                equipements[3]=[];
-                equipements[4]=[];
-                equipements[5]=[];
-                equipements[6]=[];
-                equipements[7]=[];
-               
+            equipements[0] = [];
+            equipements[1] = [];
+            equipements[2] = [];
+            equipements[3] = [];
+            equipements[4] = [];
+            equipements[5] = [];
+            equipements[6] = [];
+            equipements[7] = [];
+
             //videZoneResultatPrincipal();   
             $.each(json, function (index, value) { // pour chaque noeud JSON
-               
-equipements[0][i]= value.id_equipement;  //id_equipement
-equipements[1][i]= value.lib_equipement;  //lib_equiipement
-equipements[2][i]=value.id_type_equipement;  //id_constructeur
-equipements[3][i]=value.lib_constructeur;  //lib_constructeur
-equipements[4][i]=value.id_type;  //id_type
-equipements[5][i]=value.lib_type;  //lib_type
-equipements[6][i]=value.id_version;  //version
-equipements[7][i]=value.num_serie;  //numserie  
- i++;
+
+                equipements[0][i] = value.id_equipement;  //id_equipement
+                equipements[1][i] = value.lib_equipement;  //lib_equiipement
+                equipements[2][i] = value.id_type_equipement;  //id_constructeur
+                equipements[3][i] = value.lib_constructeur;  //lib_constructeur
+                equipements[4][i] = value.id_type;  //id_type
+                equipements[5][i] = value.lib_type;  //lib_type
+                equipements[6][i] = value.id_version;  //version
+                equipements[7][i] = value.num_serie;  //numserie  
+                i++;
             });
-           
-         
+
+
         },
         error: function () {
 
@@ -328,33 +345,40 @@ equipements[7][i]=value.num_serie;  //numserie
 }
 
 function fre_displayEquipementFromCache(id_equipement) {
-    
-    index= equipements[0].indexOf(id_equipement);
-            if(index!==-1){
-                //fre_razUI();
-                //$('#select_equipement').append("<option>"++"</option>")
-                $('#constructeur').html('');
-                $('#constructeur').append("<option>"+equipements[3][index]+"</option>");
-                
-                $('#lib_equipement').val('');
-                $('#lib_equipement').val(equipements[1][index]);
-                
-                $('#version_equipement').val('');
-                $('#version_equipement').val(equipements[6][index]);
-                
-                $('#num_serie_equipement').val('');
-                $('#num_serie_equipement').val(equipements[7][index]);
-                
-                //alert('ok'+equipements[3][index]);
-            }else{
-                
-                alert("pas trouvé "+equipements[0].length);
-            }
+
+    index = equipements[0].indexOf(id_equipement);
+    if (index !== -1) {
+        //fre_razUI();
+        //$('#select_equipement').append("<option>"++"</option>")
+        $('#constructeur').html('');
+        $('#constructeur').append("<option>" + equipements[3][index] + "</option>");
+
+        $('#lib_equipement').val('');
+        $('#lib_equipement').val(equipements[1][index]);
+
+        $('#version_equipement').val('');
+        $('#version_equipement').val(equipements[6][index]);
+
+        $('#num_serie_equipement').val('');
+        $('#num_serie_equipement').val(equipements[7][index]);
+
+        $('#type_equipement').html('');
+        $('#type_equipement').append("<option>" + equipements[5][index] + "</option>");
+        alert('ici');
+
+
+        //alert('ok'+equipements[3][index]);
+    } else {
+
+        alert("pas trouvé " + equipements[0].length);
+    }
 }
 
-function fre_afficheEquipementSuivant(){}
+function fre_afficheEquipementSuivant() {
+}
 
-function fre_afficheEquipementPrecedent(){}
+function fre_afficheEquipementPrecedent() {
+}
 
 function fre_active_input() {
     $('#select_equipement').attr('disabled', false);
@@ -362,6 +386,8 @@ function fre_active_input() {
     $('#lib_equipement').attr('disabled', false);
     $('#mac_equipement').attr('disabled', false);
     $('#version_equipement').attr('disabled', false);
+    $('#num_serie_equipement').attr('disabled', false);
+    $('#type_equipement').attr('disabled', false);
 }
 
 function fre_desactive_input() {
@@ -370,6 +396,8 @@ function fre_desactive_input() {
     $('#lib_equipement').attr('disabled', 'disabled');
     $('#mac_equipement').attr('disabled', 'disabled');
     $('#version_equipement').attr('disabled', 'disabled');
+    $('#num_serie_equipement').attr('disabled', true);
+    $('#type_equipement').attr('disabled', true);
 }
 
 function fre_afficheBtnValidAnnulle() {
@@ -382,27 +410,59 @@ function fre_cacheBtnValidAnnulle() {
     $('#btn_annuler_modif_equipement').attr('style', 'visibilty:hidden');
 }
 
-function fre_gest_select_const(){
-            id_eq = $('#select_equipement option:selected').val();
-            alert(id_eq);
-            id_equipement=id_eq;
-            libEq = $('#select_equipement option:selected').text();
-            
-            
-            //fre_displayEquipementByIdEquipement(id_eq);
-            
-            frea_displayAccessByIdEquipement(id_eq);
-            frea_setLibEquipement(libEq);   
+function fre_gest_select_const() {
+    id_eq = $('#select_equipement option:selected').val();
+    alert(id_eq);
+    id_equipement = id_eq;
+    libEq = $('#select_equipement option:selected').text();
+
+
+    //fre_displayEquipementByIdEquipement(id_eq);
+
+    frea_displayAccessByIdEquipement(id_eq);
+    frea_setLibEquipement(libEq);
 
 }
+function fre_addEquipement() {
+    //id_eq = $('#id_equipement').val();
+    lib_equipement = $('#lib_equipement').val();
+    num_serie_equipement = $('#num_serie_equipement').val();
+    version_equipement = $('#version_equipement').val();
+    constructeur = $('#constructeur option:selected').val();
+    id_type_equipement = $('#type_equipement option:selected').val();
 
-function fre_modifEquipement(){
-    id_eq= $('#id_equipement').val();
-    lib_equipement = $('#lib_equipement').text();
-    num_serie_equipement = $('#num_serie_equipement').text();
-    version_equipement = $('#version_equipement').text();
-    constructeur = $('#constructeur').text();
-     //alert(id_eq);
+
+    //alert(id_eq);
+    $.ajax({
+        method: 'POST',
+        url: pathEquipement + 'addEquipement',
+        data: {
+            //'id_equipement': id_eq,
+            'lib_equipement': lib_equipement,
+            'constructeur': constructeur,
+            'num_serie_equipement': num_serie_equipement,
+            'version_equipement': version_equipement,
+            'type_equipement': id_type_equipement
+        },
+        dataType: 'html', // on veut un retour JSON
+        success: function (msg) {
+            //alert('--'+num_serie_equipement+"--");
+            alert(msg);
+            // displayInfoPrincipalEquipement(id_central);
+            fre_displayEquipementFromCache(id_eq);
+            frea_displayAccessByIdEquipement(id_eq);
+
+        }
+    });
+}
+function fre_modifEquipement() {
+    id_eq = $('#id_equipement').val();
+    lib_equipement = $('#lib_equipement').val();
+    num_serie_equipement = $('#num_serie_equipement').val();
+    version_equipement = $('#version_equipement').val();
+    constructeur = $('#constructeur option:selected').val();
+    id_type_equipement = $('#type_equipement option:selected').val();
+    //alert(id_eq);
     $.ajax({
         method: 'POST',
         url: pathEquipement + 'updateEquipement',
@@ -410,10 +470,12 @@ function fre_modifEquipement(){
             'lib_equipement': lib_equipement,
             'constructeur': constructeur,
             'num_serie_equipement': num_serie_equipement,
-            'version_equipement': version_equipement
-            },
+            'version_equipement': version_equipement,
+            'type_equipement': id_type_equipement
+        },
         dataType: 'html', // on veut un retour JSON
         success: function (msg) {
+            //alert('--'+num_serie_equipement+"--");
             alert(msg);
             // displayInfoPrincipalEquipement(id_central);
             fre_displayEquipementFromCache(id_eq);
@@ -423,5 +485,5 @@ function fre_modifEquipement(){
             // alert('test');
         }
     });
-    
+
 }

@@ -47,7 +47,7 @@ $(document).ready(function () {
     frea_loadLibProtocol();
     
     $('#btn_ajout_access').click(function () {
-        if (id_equipement !== "") {
+        if (id_equipement !== ""  & equipements[0].length!==0) {
             frea_prepareUiToAdd();
             //alert(id_equipement+"--");
             newAccess=true;
@@ -59,13 +59,14 @@ $(document).ready(function () {
     });
 
     $('#btn_sup_access').click(function () {
-
+        alert('Pas de suppréssion pour le moment');
     });
     $('#btn_last_access').click(function () {
-        frea_afficheAccessPrecedent();
+       if( frea_equipement_est_selectione()){
+        frea_afficheAccessPrecedent();}
     });
     $('#btn_modif_access').click(function () {
-         if (id_equipement !== "") {
+         if (   frea_equipement_est_selectione()) {
           
             frea_prepareUiToUpdate();
             newAccess=false;
@@ -75,7 +76,8 @@ $(document).ready(function () {
        
     });
     $('#btn_next_access').click(function () {
-        frea_afficheAccessSuivant();
+           if( frea_equipement_est_selectione()){
+        frea_afficheAccessSuivant();}
     });
     $('#btn_valid_modif_access').click(function () {
 
@@ -87,7 +89,7 @@ $(document).ready(function () {
         //    
         //Sinon Msg        
         
-        if (id_equipement !== "") {
+        if (frea_equipement_est_selectione()) {
             
             if (newAccess) {
                   frea_addAccess();
@@ -106,16 +108,17 @@ $(document).ready(function () {
             alert(msgNoEq);
 
         }
-
+        frea_decolore_input();
     });
     $('#btn_annuler_modif_access').click(function () {
         displayAccessByIdAcess(id_access);
-
+        frea_decolore_input();
         frea_cacheBtnValidAnnulle();
         frea_desactive_input();
 
     });
 });
+
 function frea_prepareUiToAdd() {
     //je stocke pour le click sur annuler 
     id_access = $('#id_access').val();
@@ -128,7 +131,26 @@ function frea_prepareUiToAdd() {
     frea_affiche_btn_annuller_valider();
     
     frea_display_libProtocol();
+    
+    //frea_colore_input();
+    
 
+}
+
+function frea_colore_input(){
+    $('#access').css('background-color','red');
+    $('#adresse_access').attr('style','');
+    $('#lib_user_access').attr('style','');
+    $('#mdp_access').attr('style','');
+    $('#port_access').attr('style','');
+}
+
+function frea_decolore_input(){
+    $('#access').attr('style','');
+    $('#adresse_access').attr('style','');
+    $('#lib_user_access').attr('style','');
+    $('#mdp_access').attr('style','');
+    $('#port_access').attr('style','');
 }
 
 function frea_prepareUiToUpdate(){
@@ -151,6 +173,7 @@ function frea_razUI() {
 
 
 }
+
 function frea_displayAccessByIdEquipement(id_equipement) {
     //chargement de tout les access de l equipement
     loadAccessByIdEquipement(id_equipement);
@@ -176,6 +199,7 @@ function testCom(adresse,port){
     });*/
     //return retour;
 }
+
 function displayAccessByIdAcess(id_access) {
     //alert(id_access);
     index = access[0].indexOf(id_access);
@@ -195,7 +219,9 @@ function displayAccessByIdAcess(id_access) {
         
         $('#select_protocol_access').html('');
         $('#select_protocol_access').append("<option value='" + access[5][index] + "'>" + access[6][index] + "</option>");
-        $('#info_access').text((index + 1) + "/" + access[0].length+"    "+testCom(access[4][index],access[7][index]));
+        $('#titreAccess').text(
+                "Access "+
+                (index + 1) + "/" + access[0].length+"    ");
         lien = "<a  href='" + access[6][index] + "://" + access[4][index] + ":" + access[7][index] + "'>Access</a>";
 
         indexAccess = index;
@@ -206,11 +232,24 @@ function displayAccessByIdAcess(id_access) {
 
     }else {
          $('#info_access').text('');
+          $('#titreAccess').text(
+                "Access ");
+         frea_razUI();
     }
 }
+
+function frea_equipement_est_selectione(){
+    if(id_equipement!=='' & equipements[0].length!==0){
+        return true;
+    }else return false;
+}
+
 function frea_afficheAccessPrecedent() {
     index = indexAccess - 1;
-           $('#info_access').text((index + 1) + "/" + access[0].length+"   -> "+testCom(access[4][index],access[7][index]));
+    if(index>=0){
+$('#titreAccess').text(
+                "Access "+
+                (index + 1) + "/" + access[0].length+"    ");           //$('#info_access').text((index + 1) + "/" + access[0].length+"   -> "+testCom(access[4][index],access[7][index]));
 
     $('#id_access').val(access[0][index]);
     $('#adresse_access').val(access[4][index]);
@@ -231,12 +270,17 @@ function frea_afficheAccessPrecedent() {
     $('#lien_access').html(lien
 
             );
+    }
 
 }
 
 function frea_afficheAccessSuivant() {
     index = indexAccess + 1;
-            $('#info_access').text((index + 1) + "/" + access[0].length+"   -> "+testCom(access[4][index],access[7][index]));
+    if(index<access[0].length)      {
+    $('#titreAccess').text(
+               "Access "+
+                (index + 1) + "/" + access[0].length+"    ");
+            //$('#info_access').text((index + 1) + "/" + access[0].length+"   -> "+testCom(access[4][index],access[7][index]));
 
     $('#id_access').val(access[0][index]);
     $('#adresse_access').val(access[4][index]);
@@ -255,7 +299,7 @@ function frea_afficheAccessSuivant() {
     //$('#lien_access').val('  ');
     $('#lien_access').html(lien
 
-            );
+            );}
 }
 
 function loadAccessByIdEquipement(id_equipement) {
@@ -423,7 +467,7 @@ function frea_addAccess(){
              'id_equipement':id_equipement},
         dataType: 'html', // on veut un retour JSON
         success: function (msg) {
-            alert(msg);
+            //alert(msg);
             // displayInfoPrincipalEquipement(id_central);
             frea_displayAccessByIdEquipement(id_equipement);
 

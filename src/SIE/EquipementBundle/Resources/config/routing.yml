@@ -30,7 +30,7 @@ get_all_equipement:
 
 add_equipement:
     path:     /addEquipement
-    defaults: { _controller: "SIEEquipementBundle:Admin:getEquipement" }
+    defaults: { _controller: "SIEEquipementBundle:Admin:addEquipement" }
     methods:  [POST]
 
 del_equipement :

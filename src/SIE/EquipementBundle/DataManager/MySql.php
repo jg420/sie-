@@ -100,7 +100,7 @@ WHERE e.id_equipement=" . $id_equipement;
     function getEquipementsByIdCentral($id_central){
         $this->connectBDD();
 
-        $request = "SELECT co.lib_constructeur, te.libelle_type_equipement,
+        $request = "SELECT co.lib_constructeur, te.libelle_type_equipement as lib_type,
             e.id_type_equipement,
             e.id_constructeur,
             e.id_equipement , 
@@ -129,7 +129,7 @@ WHERE ec.id_central_fk_ec=" . $id_central;
                 $return[$i]['type_equipement'] = utf8_encode($row['libelle_type_equipement']);
                 $return[$i]['lib_central'] = utf8_encode($row['lib_central']);
                 $return[$i]['id_type']=$row['id_type_equipement'];
-                //$return[$i]['lib_type']=  utf8_encode($row['lib_type']);
+                $return[$i]['lib_type']=  utf8_encode($row['lib_type']);
                 $return[$i]['id_constructeur']=$row['id_constructeur'];
                 $return[$i]['lib_constructeur']=  utf8_encode($row['lib_constructeur']);
                 $return[$i]['id_version']=$row['version_actuel_equipement'];
@@ -179,44 +179,26 @@ WHERE ec.id_central_fk_ec=" . $id_central;
         return $return;
     }
     
-    function modifyEquipement($id_eq, $id_central, $lib_access, $adresseIP, $login, $mdp, $port, $adresseMac, $id_type_equipement, $lib_equipement
-    ) {
+    function addEquipement(
+            $lib_equipement,            
+            $id_constructeur,
+            $num_serie,
+            $version_actuel,
+            $id_type_equipement) {
         $this->connectBDD();
-        global $mysqli;
-
-        $request = "UPDATE ("
-                . "lib_access,"
-                . ""
-                . ")"
-                . " VALUES ('"
-                . $lib_access . "');";
-
-        echo $request;
-        $result = $this->mysqli->query($request);
-        $return = null;
-        if ($result) {
-            //$i=0;
-            /* Récupère un tableau associatif */
-            /*  while ($row = $result->fetch_assoc()) {
-
-
-              $i++;
-              } */
-
-            /* Libération des résultats */
-            //$result->free();
-        }
-        $this->closeBDD();
-        return $return;
-    }
-
-    function addEquipement($equipement) {
-        $this->connectBDD();
-        $request = "";
+        $request = "INSERT INTO EQUIPEMENT (id_constructeur,"
+                . "id_type_equipe,"
+                . "lib_equipement,"
+                . "n_serie_equipement,"
+                . "version_actuel_equipement)"
+                . "VALUES("
+                . $id_constructeur.",".$id_type_equipement.",".$lib_equipement.",".$num_serie.",".$version_actuel.")";
         $this->mysqli->query($request);
-
+        
 
         $this->closeBDD();
+        
+        return $request;
     }
 
     function updateEquipement(
@@ -225,7 +207,8 @@ WHERE ec.id_central_fk_ec=" . $id_central;
              
             $id_constructeur,
             $num_serie,
-            $version_actuel
+            $version_actuel,
+            $id_type_equipement
             
             ) {
         /*$id_equipement = $equipement['id_equipement'];
@@ -236,9 +219,10 @@ WHERE ec.id_central_fk_ec=" . $id_central;
         $version_actuel = $equipement['version'];*/
 
         
-        $request = "UPDATE EQUIPEMENT SET num_serie = '" . $num_serie . "',lib_equipement='" . $lib_equipement . "',
-     id_constructeur=".$id_constructeur . " " . ", 'version_actuel_equipement='" . $version_actuel . "'" .
-" WHERE id_equipement=" . $id_equipement;
+        $request = "UPDATE EQUIPEMENT SET n_serie_equipement = '" . $num_serie . "',lib_equipement='" . $lib_equipement . "',
+     id_constructeur=".$id_constructeur  . ","
+                . " version_actuel_equipement='" . $version_actuel . "',id_type_equipement='".$id_type_equipement
+                . "' WHERE id_equipement=" . $id_equipement;
         $this->connectBDD();
         $return = $request;
         $result = $this->mysqli->query($request);
@@ -301,7 +285,7 @@ WHERE ec.id_central_fk_ec=" . $id_central;
          if($result){
             $i=0;
              while ($row = $result->fetch_assoc()) {
-                 $return[$i]['lib_type']=$row['lib_type_equipement'];
+                 $return[$i]['lib_type']=  utf8_encode($row['libelle_type_equipement']);
                  $return[$i]['id_type']=$row['id_type_equipement'];
                  //echo 'ici';
                  $i++;

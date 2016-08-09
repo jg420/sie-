@@ -96,5 +96,11 @@ class AdminController extends Controller {
     }
    
     
-   
+   function get_all_societeAction(){
+       $this->setUpDataManager();
+       
+       
+       
+       return new JsonResponse($this->dataManager->getSociete());
+   }
 }

@@ -15,8 +15,8 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2 = $this->env->getExtension("native_profiler");
-        $__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2->enter($__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEEquipementBundle:Default:result_equipement.html.twig"));
+        $__internal_798e69f4ce8f9e3b64c502ed393a295796b030e8ddd3554f163efb233a1f2140 = $this->env->getExtension("native_profiler");
+        $__internal_798e69f4ce8f9e3b64c502ed393a295796b030e8ddd3554f163efb233a1f2140->enter($__internal_798e69f4ce8f9e3b64c502ed393a295796b030e8ddd3554f163efb233a1f2140_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SIEEquipementBundle:Default:result_equipement.html.twig"));
 
         // line 2
         echo "
@@ -51,31 +51,10 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
         unset($context["asset_url"]);
         // line 17
         echo "    </button>
-
-    <button ng-model=\"btn_sup_equipement\" id=\"btn_sup_equipement\" class=\"btn_sup\"  >
-        ";
-        // line 20
-        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
-            // asset "516a1e4_0"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_516a1e4_0") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/516a1e4_btn_supr_1.png");
-            // line 22
-            echo "        <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"Supr\"/>
-        ";
-        } else {
-            // asset "516a1e4"
-            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_516a1e4") : $this->env->getExtension('asset')->getAssetUrl("_controller/images/516a1e4.png");
-            echo "        <img  class=\"img-background-button\"    src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
-            echo "\"  alt=\"Supr\"/>
-        ";
-        }
-        unset($context["asset_url"]);
-        // line 24
-        echo "    </button>
-
-    <br/>
+   
+    ";
+        // line 26
+        echo "    <br/>
     ";
         // line 35
         echo "
@@ -199,7 +178,7 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 
 ";
         
-        $__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2->leave($__internal_199d142679503dece189eb5e59042ffd3a45e6872f6d890af31b2b6e23d55cc2_prof);
+        $__internal_798e69f4ce8f9e3b64c502ed393a295796b030e8ddd3554f163efb233a1f2140->leave($__internal_798e69f4ce8f9e3b64c502ed393a295796b030e8ddd3554f163efb233a1f2140_prof);
 
     }
 
@@ -215,7 +194,7 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 
     public function getDebugInfo()
     {
-        return array (  186 => 99,  153 => 64,  139 => 63,  135 => 61,  129 => 57,  115 => 55,  111 => 53,  107 => 51,  103 => 41,  89 => 39,  85 => 37,  81 => 35,  76 => 24,  62 => 22,  58 => 20,  53 => 17,  39 => 15,  35 => 13,  22 => 2,);
+        return array (  165 => 99,  132 => 64,  118 => 63,  114 => 61,  108 => 57,  94 => 55,  90 => 53,  86 => 51,  82 => 41,  68 => 39,  64 => 37,  60 => 35,  57 => 26,  53 => 17,  39 => 15,  35 => 13,  22 => 2,);
     }
 }
 /* {# SIE/CentralBundle/Resources/views/form/result_equipement.html.twig #}*/
@@ -235,14 +214,14 @@ class __TwigTemplate_6abc19f5e7cb5bdef70c00996c8bb1fc1ae3e709b98c0b1f88ddade1d17
 /*         <img  class="img-background-button"    src="{{ asset_url }}"  alt="AJout"/>*/
 /*         {% endimage %}*/
 /*     </button>*/
-/* */
-/*     <button ng-model="btn_sup_equipement" id="btn_sup_equipement" class="btn_sup"  >*/
+/*    */
+/*     {#<button ng-model="btn_sup_equipement" id="btn_sup_equipement" class="btn_sup"  >*/
 /*         {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'*/
 /*         %}*/
 /*         <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>*/
 /*         {% endimage %}*/
 /*     </button>*/
-/* */
+/*     #}*/
 /*     <br/>*/
 /*     {#*/
 /*     <button ng-model="btn_last_equipement" id="btn_last_equipement" class="btn_precedent" >*/

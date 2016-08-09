@@ -27,9 +27,9 @@ class AdminController extends Controller {
     public function add_documentAction() {
         $this->setUpDataManager();
         $request = Request::createFromGlobals();
-        $file=$request->files->get('file_document');
-        $name=$file->getClientOriginalName();
-         
+        $file = $request->files->get('file_document');
+        $name = $file->getClientOriginalName();
+
         //TODO in service 
         $uploaddir = '/var/www/html/uploads/';
         $uploadfile = $uploaddir . $name;
@@ -40,24 +40,23 @@ class AdminController extends Controller {
             $return = var_dump($file);
         }
 
-       // return new Response($return);
+        // return new Response($return);
 
-          return new Response($this->dataManager
-          ->ajoute_document($name)
-          );
-          
+        return new Response($this->dataManager
+                        ->ajoute_document($name)
+        );
     }
-    function add_document_centralAction(){
-         $this->setUpDataManager();
-         $request = Request::createFromGlobals();
-         
-         $id_central=$request->request->get('id_central');
-         $id_doc=$request->request->get('id_doc');
-         $lib_doc=$request->request->get('lib_doc');
-         
-         return new Response($this->dataManager
-          ->add_document_central($lib_doc,$id_doc,$id_central));
-          
+
+    function add_document_centralAction() {
+        $this->setUpDataManager();
+        $request = Request::createFromGlobals();
+
+        $id_central = $request->request->get('id_central');
+        $id_doc = $request->request->get('id_doc');
+        $lib_doc = $request->request->get('lib_doc');
+
+        return new Response($this->dataManager
+                        ->add_document_central($lib_doc, $id_doc, $id_central));
     }
 
 }

@@ -1,7 +1,7 @@
 {# SIE/DocumentBundle/Resources/views/form/result_document.html.twig #}
 
 <div  id="bloc_resultat_document" ng-controller="result_document_controller">
-    <b class="titreSection">Documents</b>
+    <b class="titreSection" id='titreDocument'>Documents</b>
     <p id="lib_central_document" class="lib_central"></p>
     
 
@@ -15,12 +15,13 @@
     {% endimage %}
     </button>
     
+    {#
     <button ng-model="btn_sup_document" id="btn_sup_document" class="btn_sup"  >
      {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'
        %}
        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>
     {% endimage %}
-    </button>
+    </button>#}
     
     <br/>
     <button ng-model="btn_last_document" id="btn_last_document" class="btn_precedent" >
@@ -56,7 +57,7 @@
     </button>
     
     
-    <button ng-model="btn_annuler_modif_document" id="btn_annuler_modif_document" class="btn_annuler" style="visibility: hidden">
+    <button ng-model="btn_annuler_modif_document" id="btn_annuler_document" class="btn_annuler" style="visibility: hidden">
      {% image '@SIECoreBundle/Resources/public/images/btn_annuler.jpeg'
        %}
         <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>
@@ -71,9 +72,12 @@
     <br/>
     <b>Lien :</b>
     <br/>
+    <a id="lien_document" href=".."></a>
     <br/>
     <br/>
-    <a id="lien_document" href="..">dowload</a>
+     <br/>
+    <br/>
+     
     <input  name="file_document"   id="file_document" type="file" disabled="disabled"> 
     <br/>
     <br/>

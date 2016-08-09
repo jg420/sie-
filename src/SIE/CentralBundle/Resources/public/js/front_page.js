@@ -47,6 +47,10 @@ $(document).ready(function () {
         lastClick = 4;
         afficheSelecteur(4);
     });
+    $('#bloc_resultat_document').click(function () {
+        lastClick = 5;
+        afficheSelecteur(5);
+    });
 
     gereNavigation();
  
@@ -71,6 +75,9 @@ function afficheSelecteur(i) {
             $('#bloc_recherche').css({
                 border: ''
             });
+              $('#bloc_resultat_document').css({
+                border: ''
+            });
             break;
         case 1 :
             $('#bloc_resultat_principal').css({
@@ -88,6 +95,9 @@ function afficheSelecteur(i) {
             $('#bloc_recherche').css({
                 border: ''
             });
+              $('#bloc_resultat_document').css({
+                border: ''
+            });
             break;
         case 2 :
             $('#bloc_resultat_principal').css({
@@ -103,6 +113,9 @@ function afficheSelecteur(i) {
                 border: ''
             });
             $('#bloc_recherche').css({
+                border: ''
+            });
+              $('#bloc_resultat_document').css({
                 border: ''
             });
             break;
@@ -123,6 +136,9 @@ function afficheSelecteur(i) {
             $('#bloc_recherche').css({
                 border: ''
             });
+              $('#bloc_resultat_document').css({
+                border: ''
+            });
             break;
         case 4:
             $('#bloc_resultat_principal').css({
@@ -138,6 +154,29 @@ function afficheSelecteur(i) {
                 border: '',
             });
             $('#bloc_recherche').css({
+                border: '3px blue solid'
+            });
+              $('#bloc_resultat_document').css({
+                border: ''
+            });
+            break;
+        case 5:
+            $('#bloc_resultat_principal').css({
+                border: ''
+            });
+            $('#bloc_resultat_access').css({
+                border: ''
+            });
+            $('#bloc_resultat_contrat').css({
+                border: ''
+            });
+            $('#bloc_resultat_equipement').css({
+                border: '',
+            });
+            $('#bloc_recherche').css({
+                border: ''
+            });
+            $('#bloc_resultat_document').css({
                 border: '3px blue solid'
             });
             break;
@@ -165,6 +204,9 @@ function key_left_pressed() {
         case 4:
             frea_afficheAccessPrecedent();
             break;
+        case 5:
+            frd_affiche_doc_precedent();
+            break;
 
 
     }
@@ -188,6 +230,9 @@ function key_right_pressed() {
             break;
         case 4:
             frea_afficheAccessPrecedent();
+            break;
+        case 5:
+            frd_affiche_doc_suivant();
             break;
 
 
