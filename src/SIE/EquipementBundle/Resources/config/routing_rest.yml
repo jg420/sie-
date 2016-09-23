@@ -1,7 +1,0 @@
-
-# src/SIE/EquipementBundle/Resources/config/routing_rest.yml
- 
-equipement : 
-  type: rest
-  resource:     "SIEEquipementBundle:EquipementRest"
-  name_prefix:  api_

@@ -1,7 +1,0 @@
-
-# src/SIE/AccessBundle/Resources/config/routing_rest.yml
- 
-access : 
-  type: rest
-  resource:     "SIEAccessBundle:AccessRest"
-  name_prefix:  api_

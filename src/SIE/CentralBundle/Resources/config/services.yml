@@ -1,4 +1,0 @@
-services:
-#    sie_central.example:
-#        class: SIE\CentralBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]

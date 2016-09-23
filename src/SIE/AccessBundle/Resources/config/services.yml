@@ -1,4 +1,0 @@
-services:
-#    sie_access.example:
-#        class: SIE\AccessBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]

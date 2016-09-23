@@ -1,5 +1,0 @@
-# src/SIE/DirectionBundle/Resources/config/routing.yml
- 
-sie_direction_homepage:
-    path:     /direction-defaut
-    defaults: { _controller: SIEDirectionBundle:Default:index }
