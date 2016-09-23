@@ -1,0 +1,47 @@
+SIE\CoreBundle\Entity\CorrespondanceCentralConfig:
+    type: entity
+    table: CORRESPONDANCE_CENTRAL_CONFIG
+    indexes:
+        FK_central_config2:
+            columns:
+                - id_config_fk_ccc
+        IDX_33240E2D1883BDE1:
+            columns:
+                - id_central_fk_ccc
+    uniqueConstraints:
+        id_central_fk_ccc:
+            columns:
+                - id_central_fk_ccc
+                - id_config_fk_ccc
+    id:
+        idCentralConfig:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_central_config
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idConfigFkCcc:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_config_fk_ccc:
+                    referencedColumnName: id_config
+            orphanRemoval: false
+        idCentralFkCcc:
+            targetEntity: Central
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_central_fk_ccc:
+                    referencedColumnName: id_central
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

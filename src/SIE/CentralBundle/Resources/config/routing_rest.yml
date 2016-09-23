@@ -1,0 +1,7 @@
+
+# src/SIE/CentralBundle/Resources/config/routing_rest.yml
+ 
+central : 
+  type: rest
+  resource:     "SIECentralBundle:CentralRest"
+  name_prefix:  api_

@@ -1,0 +1,19 @@
+SIE\CoreBundle\Entity\TypeEquipement:
+    type: entity
+    table: TYPE_EQUIPEMENT
+    id:
+        idTypeEquipement:
+            id: true
+            type: integer
+            column: id_type_equipement
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelleTypeEquipement:
+            type: string
+            length: 25
+            nullable: true
+            options:
+                fixed: ''
+            column: libelle_type_equipement
+    lifecycleCallbacks: {  }

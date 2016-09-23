@@ -1,0 +1,117 @@
+{# SIE/CentralBundle/Resources/views/form/result.html.twig #}
+
+<div id="bloc_resultat_principal" class="bloc_resultat_principal" ng-controller="result_controller">
+    <b class="titreSection" id='titreSection_result'>Centrales</b>
+    <br/>
+   
+    {# <button id="btn_ajout_central" class="btn_ajout" ng-model="btn_ajout_central" >
+     {% image '@SIECoreBundle/Resources/public/images/btn_ajout.jpeg'
+       %}
+       <img  class="img-background-button"    src="{{ asset_url }}"  alt="AJout"/>
+    {% endimage %}
+    </button>
+    
+    <button id="btn_sup_central" class="btn_sup"  ng-model="btn_sup_central" >
+     {% image '@SIECoreBundle/Resources/public/images/btn_supr.png'
+       %}
+       <img  class="img-background-button"    src="{{ asset_url }}"  alt="Supr"/>
+    {% endimage %}
+    </button>
+    #}
+    <button>
+        Synthese
+    </button>
+    
+    <br/>
+    <br/>
+    <button id="btn_last_central" class="btn_precedent"  ng-model="btn_last_central">
+        {% image '@SIECoreBundle/Resources/public/images/btn_gauche.jpeg'
+       %}
+        <img  class="img-background-button"    src="{{ asset_url }}"  alt="Precedent"/>
+        {% endimage %}       
+    </button>
+    
+   
+    
+    <button id="btn_modif_central" class="btn_modifier"  ng-model="btn_modif_central" >
+     {% image '@SIECoreBundle/Resources/public/images/btn_modif.jpeg'
+       %}
+       <img  class="img-background-button"    src="{{ asset_url }}"  alt="Modif"/>
+    {% endimage %}
+    </button>
+    
+    <button id="btn_next_central"  class="btn_suivant"  ng-model="btn_next_central" >
+        {% image '@SIECoreBundle/Resources/public/images/droite.jpeg'
+       %}
+        <img class="img-background-button"    src="{{ asset_url }}"  alt="Suivant"/>
+        {% endimage %}
+    </button>
+    <br/>
+    
+    <button ng-model="btn_valid_modif_central" id="btn_valid_central"  class="btn_valider"   value="valider" style="visibility: hidden">
+        {% image '@SIECoreBundle/Resources/public/images/btn_valider.jpeg'
+       %}
+        <img class="img-background-button"   src="{{ asset_url }}"  alt="valider"/>
+        {% endimage %}
+    </button>
+    
+    
+    <button ng-model="btn_annuler_modif_central" id="btn_annuler_central" class="btn_annuler" style="visibility: hidden">
+     {% image '@SIECoreBundle/Resources/public/images/btn_annuler.jpeg'
+       %}
+        <img class="img-background-button"   src="{{ asset_url }}"  alt="annuler"/>
+        {% endimage %}    
+    </button>
+    <br/>
+    <br/>
+    
+    <b>Tri :</b>
+    <br/>
+
+    <input ng-model="chk_tri_code_ana" id="chk_tri_code_ana" type="checkbox" >
+    code analytique  
+    <br/>
+
+    <input ng-model="chk_tri_lib_ana"  id="chk_tri_lib_central" type="checkbox" >
+    nom
+    <br/>
+
+    <input  ng-model="chk_tri_societe" id="chk_tri_societe" type="checkbox" >
+    société
+    <br/>
+
+    <br/>
+    <b>Code Analytique : <b/>
+        <br/>
+        <input size='8'  ng-model="code_analytique" id="output_code_analytique" type="text" disabled='disabled'>
+        <br/> 
+        <b>Nom de la central : </b>
+        <br/>
+        <input  ng-model="lib_central" disabled='disabled' id="output_lib_central" type="text"   >
+        <br/>
+ 
+        <b>Société d'exploitation : </b>
+        <br/>
+        <select  ng-model="societe" disabled='disabled' id="select_output_societe"     >
+        </select>
+        <br/>
+        <br/>
+        <b>Zone : </b>
+        <br/>
+        <input  ng-model="lib_zone" size='8' disabled='disabled' id="output_lib_zone" type="text" >
+        <br/>
+        <input  ng-model="id_direction" id="output_id_direction" type="hidden" >
+        <input  ng-model="id_central" id="output_id_central" type='hidden'  >
+        {#<input id="output_id_central" type='hidden' value={{ central.getIdCentral() }} />#}
+
+        {#<input disabled='disabled' id="output_lib_central" type="text" value={{ central.getLibCentral() }} />#}
+        <br/><b>Type de central :</b>
+        <br/>
+        <input  ng-model="type_central" id="output_select_type_central" disabled='disabled' type="text">
+        <br/>  
+        <br/>  
+        <b>Chargé d'exploitation :</b>
+        <br/>
+        <input  ng-model="lib_cex" disabled='disabled' id="output_lib_cex" type="text">
+
+</div>

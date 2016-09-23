@@ -1,0 +1,4 @@
+services:
+#    sie_equipement.example:
+#        class: SIE\EquipementBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

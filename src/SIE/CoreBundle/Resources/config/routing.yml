@@ -1,0 +1,6 @@
+ # src/SIE/CoreBundle/Resources/config/routing.yml
+
+sie_homepage:
+    path:     /
+    defaults: { _controller: SIECoreBundle:Acceuil:index }
+

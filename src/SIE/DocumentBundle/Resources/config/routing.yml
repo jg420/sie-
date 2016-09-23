@@ -1,0 +1,14 @@
+get_documents_by_id_central:
+    path: /getDocuments/{id_central}
+    defaults: { _controller: "SIEDocumentBundle:Admin:getDocuments" }
+
+add_document:
+    path:     /add_document
+    defaults: { _controller: "SIEDocumentBundle:Admin:add_document" }
+    methods:  [POST]
+    
+add_document_central:
+    path:   /add_document_central
+    defaults: { _controller: "SIEDocumentBundle:Admin:add_document_central" }
+    methods:  [POST]
+    

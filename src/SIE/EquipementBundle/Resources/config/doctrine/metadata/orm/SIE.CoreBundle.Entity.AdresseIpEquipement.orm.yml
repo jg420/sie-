@@ -1,0 +1,19 @@
+SIE\CoreBundle\Entity\AdresseIpEquipement:
+    type: entity
+    table: ADRESSE_IP_EQUIPEMENT
+    id:
+        idAdresseIpEquipement:
+            id: true
+            type: integer
+            column: id_adresse_ip_equipement
+            generator:
+                strategy: IDENTITY
+    fields:
+        adresseIpEquipement:
+            type: string
+            length: 50
+            nullable: true
+            options:
+                fixed: ''
+            column: adresse_ip_equipement
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+sie_access_homepage:
+    path:     /
+    defaults: { _controller: SIEAccessBundle:Default:index }
+get_access:
+    path:     /getAccess/{id_access}/
+    defaults: { _controller: "SIEAccessBundle:Admin:getAccess" }
+    
+get_accesss:
+    path:     /getAccesss/{id_equipement}/
+    defaults: { _controller: "SIEAccessBundle:Admin:getAccessByIdEquipement" }
+
+get_all_access:
+    path:   /getAll
+    defaults: { _controller: "SIEAccessBundle:Admin:getAll" }
+    
+add_access:
+    path:     /addAccess
+    defaults: { _controller: "SIEAccessBundle:Admin:addAccess" }
+    methods:  [POST]
+
+del_access :
+    path:     /delAccess
+    defaults: { _controller: "SIEAccessBundle:Admin:delAccess" }
+    methods:  [POST]
+
+update_access :
+    path:     /modifAccess
+    defaults: { _controller: "SIEAccessBundle:Admin:updateAccess" }
+    methods:  [POST]
+    
+get_protocol :
+    path:   /getProtocols
+    defaults: { _controller: "SIEAccessBundle:Admin:getProtocols" }
+    
+test_access :
+    path:   /testAccess/{adresse}/{port}
+    defaults: { _controller: "SIEAccessBundle:Admin:testAccess" }
+    

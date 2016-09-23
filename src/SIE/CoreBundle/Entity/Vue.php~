@@ -1,0 +1,43 @@
+<?php
+
+namespace SIE\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Vue
+ *
+ * @ORM\Table(name="VUE", indexes={@ORM\Index(name="FK_vue_central", columns={"id_central"})})
+ * @ORM\Entity
+ */
+class Vue
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lien_vue", type="string", length=50, nullable=true)
+     */
+    private $lienVue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_vue", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idVue;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\Central
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\Central")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_central", referencedColumnName="id_central")
+     * })
+     */
+    private $idCentral;
+
+
+}
+

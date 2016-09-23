@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SIE\CoreBundle\Entity\CorrespondanceEquipementConnection" table="CORRESPONDANCE_EQUIPEMENT_CONNECTION">
+    <indexes>
+      <index name="FK_corresp_equip_connection2" columns="id_type_connection_fk_cect"/>
+      <index name="IDX_B8FA920E5BE22539" columns="id_equipement_fk_cect"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_equipement_fk_cect" columns="id_equipement_fk_cect,id_type_connection_fk_cect"/>
+    </unique-constraints>
+    <id name="idEquipementConnection" type="integer" column="id_equipement_connection">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="infoComp" type="string" column="info_comp" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idEquipementFkCect" target-entity="Equipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_equipement_fk_cect" referenced-column-name="id_equipement"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTypeConnectionFkCect" target-entity="TypeConnectionEquipement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_type_connection_fk_cect" referenced-column-name="id_type_connection"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

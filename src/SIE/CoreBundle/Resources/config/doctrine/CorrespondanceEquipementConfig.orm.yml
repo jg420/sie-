@@ -1,0 +1,55 @@
+SIE\CoreBundle\Entity\CorrespondanceEquipementConfig:
+    type: entity
+    table: CORRESPONDANCE_EQUIPEMENT_CONFIG
+    indexes:
+        FK_corresp_equip_config:
+            columns:
+                - id_config_fk_cecf
+        IDX_2F56924BA85B5471:
+            columns:
+                - id_equipement_fk_cecf
+    uniqueConstraints:
+        id_equipement_fk_cecf:
+            columns:
+                - id_equipement_fk_cecf
+                - id_config_fk_cecf
+    id:
+        idEquipementConfig:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_equipement_config
+            generator:
+                strategy: IDENTITY
+    fields:
+        infoComp:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: info_comp
+    manyToOne:
+        idEquipementFkCecf:
+            targetEntity: Equipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_equipement_fk_cecf:
+                    referencedColumnName: id_equipement
+            orphanRemoval: false
+        idConfigFkCecf:
+            targetEntity: Config
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_config_fk_cecf:
+                    referencedColumnName: id_config
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

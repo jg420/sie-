@@ -1,0 +1,55 @@
+SIE\CoreBundle\Entity\CorrespondanceEquipementType:
+    type: entity
+    table: CORRESPONDANCE_EQUIPEMENT_TYPE
+    indexes:
+        FK_corresp_equipe_type1:
+            columns:
+                - id_type_equipement_fk_cet
+        IDX_10B10544B032D12A:
+            columns:
+                - id_equipement_fk_cet
+    uniqueConstraints:
+        id_equipement_fk_cet:
+            columns:
+                - id_equipement_fk_cet
+                - id_type_equipement_fk_cet
+    id:
+        idEquipementType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_equipement_type
+            generator:
+                strategy: IDENTITY
+    fields:
+        infoComp:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: info_comp
+    manyToOne:
+        idTypeEquipementFkCet:
+            targetEntity: TypeEquipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_equipement_fk_cet:
+                    referencedColumnName: id_type_equipement
+            orphanRemoval: false
+        idEquipementFkCet:
+            targetEntity: Equipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_equipement_fk_cet:
+                    referencedColumnName: id_equipement
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

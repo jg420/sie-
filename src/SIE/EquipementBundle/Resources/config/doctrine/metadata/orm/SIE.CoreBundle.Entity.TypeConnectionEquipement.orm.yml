@@ -1,0 +1,19 @@
+SIE\CoreBundle\Entity\TypeConnectionEquipement:
+    type: entity
+    table: TYPE_CONNECTION_EQUIPEMENT
+    id:
+        idTypeConnection:
+            id: true
+            type: integer
+            column: id_type_connection
+            generator:
+                strategy: IDENTITY
+    fields:
+        libTypeConnection:
+            type: string
+            length: 25
+            nullable: true
+            options:
+                fixed: ''
+            column: lib_type_connection
+    lifecycleCallbacks: {  }

@@ -1,0 +1,33 @@
+<?php
+
+namespace SIE\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypeEquipement
+ *
+ * @ORM\Table(name="TYPE_EQUIPEMENT")
+ * @ORM\Entity
+ */
+class TypeEquipement
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle_type_equipement", type="string", length=25, nullable=true)
+     */
+    private $libelleTypeEquipement;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_type_equipement", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTypeEquipement;
+
+
+}
+

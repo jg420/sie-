@@ -1,0 +1,86 @@
+SIE\CoreBundle\Entity\Equipement:
+    type: entity
+    table: EQUIPEMENT
+    indexes:
+        FK_type_equiepemnt:
+            columns:
+                - id_type_equipement
+        FK_constructeur_equipement:
+            columns:
+                - id_constructeur
+    id:
+        idEquipement:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_equipement
+            generator:
+                strategy: IDENTITY
+    fields:
+        libEquipement:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: lib_equipement
+        prixEquipement:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: prix_equipement
+        nSerieEquipement:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: n_serie_equipement
+        versionActuelEquipement:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: version_actuel_equipement
+    manyToOne:
+        idConstructeur:
+            targetEntity: Constructeur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_constructeur:
+                    referencedColumnName: id_constructeur
+            orphanRemoval: false
+        idTypeEquipement:
+            targetEntity: TypeEquipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_equipement:
+                    referencedColumnName: id_type_equipement
+            orphanRemoval: false
+    manyToMany:
+        idCentralFkEc:
+            targetEntity: Central
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idEquipementFkEc
+            joinTable:
+                name: equipement_central
+                joinColumns:
+                    -
+                        name: id_equipement_fk_ec
+                        referencedColumnName: id_equipement
+                inverseJoinColumns:
+                    -
+                        name: id_central_fk_ec
+                        referencedColumnName: id_central
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+SIE\CoreBundle\Entity\Protocol:
+    type: entity
+    table: PROTOCOL
+    id:
+        idProtocol:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_protocol
+            generator:
+                strategy: IDENTITY
+    fields:
+        libProtocol:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: lib_protocol
+    lifecycleCallbacks: {  }

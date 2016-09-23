@@ -1,0 +1,44 @@
+SIE\CoreBundle\Entity\CorrespondanceAccessEquipement:
+    type: entity
+    table: CORRESPONDANCE_ACCESS_EQUIPEMENT
+    indexes:
+        FK_equipement_access:
+            columns:
+                - id_equipement_fk_ae
+        IDX_76E2A7C1D8F8DAB6:
+            columns:
+                - id_access_fk
+    uniqueConstraints:
+        id_access_fk:
+            columns:
+                - id_access_fk
+                - id_equipement_fk_ae
+    id:
+        idAccessEquipement:
+            id: true
+            type: integer
+            column: id_access_equipement
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idEquipementFkAe:
+            targetEntity: SIE\CoreBundle\Entity\Equipement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_equipement_fk_ae:
+                    referencedColumnName: id_equipement
+            orphanRemoval: false
+        idAccessFk:
+            targetEntity: SIE\CoreBundle\Entity\Access
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_access_fk:
+                    referencedColumnName: id_access
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

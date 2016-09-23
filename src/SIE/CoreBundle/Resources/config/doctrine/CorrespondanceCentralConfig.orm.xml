@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SIE\CoreBundle\Entity\CorrespondanceCentralConfig" table="CORRESPONDANCE_CENTRAL_CONFIG">
+    <indexes>
+      <index name="FK_central_config2" columns="id_config_fk_ccc"/>
+      <index name="IDX_33240E2D1883BDE1" columns="id_central_fk_ccc"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_central_fk_ccc" columns="id_central_fk_ccc,id_config_fk_ccc"/>
+    </unique-constraints>
+    <id name="idCentralConfig" type="integer" column="id_central_config">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idCentralFkCcc" target-entity="Central" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_central_fk_ccc" referenced-column-name="id_central"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idConfigFkCcc" target-entity="Config" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_config_fk_ccc" referenced-column-name="id_config"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

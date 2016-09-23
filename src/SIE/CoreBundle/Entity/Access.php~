@@ -1,0 +1,74 @@
+<?php
+
+namespace SIE\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Access
+ *
+ * @ORM\Table(name="ACCESS", indexes={@ORM\Index(name="FK_protocol_access0", columns={"id_protocol"}), @ORM\Index(name="FK_access_equiepemnt", columns={"id_adresse_ip_equipement"})})
+ * @ORM\Entity
+ */
+class Access
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="n_port", type="integer", nullable=false)
+     */
+    private $nPort;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=50, nullable=true)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=50, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lib_access", type="string", length=50, nullable=true)
+     */
+    private $libAccess;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_access", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAccess;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\Protocol
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\Protocol")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_protocol", referencedColumnName="id_protocol")
+     * })
+     */
+    private $idProtocol;
+
+    /**
+     * @var \SIE\CoreBundle\Entity\AdresseIpEquipement
+     *
+     * @ORM\ManyToOne(targetEntity="SIE\CoreBundle\Entity\AdresseIpEquipement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_adresse_ip_equipement", referencedColumnName="id_adresse_ip_equipement")
+     * })
+     */
+    private $idAdresseIpEquipement;
+
+
+}
+

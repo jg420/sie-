@@ -1,0 +1,34 @@
+SIE\CoreBundle\Entity\Vue:
+    type: entity
+    table: VUE
+    indexes:
+        FK_vue_central:
+            columns:
+                - id_central
+    id:
+        idVue:
+            id: true
+            type: integer
+            column: id_vue
+            generator:
+                strategy: IDENTITY
+    fields:
+        lienVue:
+            type: string
+            length: 50
+            nullable: true
+            options:
+                fixed: ''
+            column: lien_vue
+    manyToOne:
+        idCentral:
+            targetEntity: SIE\CoreBundle\Entity\Central
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_central:
+                    referencedColumnName: id_central
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
