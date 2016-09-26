@@ -53,7 +53,7 @@ class MySql {
 
     function getDocumentByIdCentral($id_central) {
         $this->connectBDD();
-        $request = "SELECT * FROM CORRESPONDANCE_DOCUMENT_CENTRAL AS cdc "
+        $request =" SELECT * FROM CORRESPONDANCE_DOCUMENT_CENTRAL AS cdc "
                 . " INNER JOIN DOCUMENT as d ON cdc.id_document=d.id_document "
                 . " WHERE cdc.id_central=" . $id_central;
         $result = $this->mysqli->query($request);

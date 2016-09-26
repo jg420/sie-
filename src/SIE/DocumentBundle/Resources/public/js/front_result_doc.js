@@ -151,8 +151,6 @@ function frd_charge_doc_par_id_central() {
                 listDocument[1][i] = path_upload+""+value.lien_document;   //lib_access
                 listDocument[2][i] = value.lib_document;   //login
 
-
-
                 i++;
             });
         }
@@ -184,11 +182,12 @@ function frd_prepare_a_ajouter() {
     } else
         alert('pas de central selectioné ! ');
 }
+
+
 function frd_prepare_a_modifier() {
     if (frd_is_valid_document()) {
         frd_active_input();
         frd_affiche_btn_annulle_valider();
-
     }
 }
 
@@ -206,6 +205,7 @@ function frd_affiche_doc_suivant() {
     } else
         alert('pb');
 }
+
 
 function frd_affiche_doc_precedent() {
     index = index_document - 1;
@@ -244,15 +244,17 @@ function frd_modifie_doc() {
         }, error: function () {
             // alert('test');
         }
-
-
     });
 
 }
 
 function frd_ajoute_doc() {
-    lib_document = $('#lib_document').val();
+    
+    //verification du nom avant d ajouter 
+    lib_document = $('#lib_document').val(); 
+    
     lien_document = $('#lien_document').val();
+    
     document = $('#file_document').val();
 
     var form = document.getElementById("form_doc");
@@ -286,6 +288,7 @@ function frd_ajoute_doc() {
     });
 
 }
+
 function frd_ajoute_doc_central(id_doc, lib_document, id_central) {
     $.ajax({
         method: 'POST',
